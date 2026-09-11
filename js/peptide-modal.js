@@ -31,14 +31,21 @@
     .pep-open:hover, .pep-open:focus-visible { color: var(--teal, #4a8fa0); border-bottom-color: var(--teal, #4a8fa0); }
     .pep-open:focus-visible { outline: 2px solid var(--teal, #4a8fa0); outline-offset: 3px; }
 
+    /* Column layout with a scrolling middle: the longest peptide runs past a
+       phone screen, and without this the prescription notice and Add to Cart
+       sit below the fold with no way to reach them. */
     #pepDialog {
       border: 0; border-radius: 6px; padding: 0; width: min(560px, calc(100vw - 32px));
+      max-height: min(86vh, 780px); display: flex; flex-direction: column;
+      margin: auto; /* display:flex drops the UA centering, so restore it */
       box-shadow: 0 24px 60px rgba(0,0,0,0.28); color: #333;
       font-family: 'Montserrat', system-ui, sans-serif;
     }
+    #pepDialog[open] { display: flex; }
     #pepDialog::backdrop { background: rgba(26,58,66,0.55); }
     .pep-head {
-      padding: 24px 28px 18px; border-bottom: 1px solid #e0ddd9;
+      position: relative; flex: 0 0 auto;
+      padding: 24px 52px 18px 28px; border-bottom: 1px solid #e0ddd9;
       display: flex; align-items: flex-start; gap: 16px;
     }
     .pep-head h2 {
@@ -47,13 +54,20 @@
     }
     .pep-cat { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal, #4a8fa0); font-weight: 700; }
     .pep-price { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px; color: var(--teal-dark, #3a7080); margin-left: auto; white-space: nowrap; }
+    /* Pinned top-right instead of riding the flex flow, so it cannot end up on
+       a line of its own when the header wraps on a narrow screen. */
     .pep-close {
-      background: none; border: 0; font-size: 26px; line-height: 1; color: #999;
-      cursor: pointer; padding: 0 0 0 8px;
+      position: absolute; top: 14px; right: 14px;
+      background: none; border: 0; font-size: 28px; line-height: 1; color: #999;
+      cursor: pointer; padding: 4px 8px;
     }
     .pep-close:hover { color: #333; }
+    .pep-close:focus-visible { outline: 2px solid var(--teal, #4a8fa0); outline-offset: 2px; }
 
-    .pep-body { padding: 22px 28px 4px; font-size: 13.5px; line-height: 1.85; color: #555; }
+    .pep-body {
+      flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 22px 28px; font-size: 13.5px; line-height: 1.85; color: #555;
+    }
     .pep-body h3 {
       font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
       color: var(--teal, #4a8fa0); font-weight: 700; margin: 22px 0 10px;
@@ -71,14 +85,18 @@
     .pep-dose tr + tr th, .pep-dose tr + tr td { border-top: 1px solid #efece8; }
 
     .pep-foot {
-      margin: 22px 0 0; padding: 16px 28px 22px; border-top: 1px solid #e0ddd9;
+      flex: 0 0 auto; margin: 0; padding: 16px 28px 22px;
+      border-top: 1px solid #e0ddd9; background: #fff;
       display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
     }
     .pep-rx { font-size: 11.5px; line-height: 1.7; color: #8a8a8a; flex: 1 1 220px; margin: 0; }
 
     @media (max-width: 520px) {
-      .pep-head { flex-wrap: wrap; }
-      .pep-price { margin-left: 0; width: 100%; }
+      .pep-head { flex-wrap: wrap; gap: 4px; padding-bottom: 16px; }
+      .pep-price { margin-left: 0; width: 100%; font-size: 24px; }
+      .pep-body { padding: 18px 22px; }
+      .pep-foot { padding: 14px 22px 18px; }
+      .pep-foot .alpha-add-to-cart { width: 100%; margin-left: 0; }
     }
   `;
   document.head.appendChild(style);
@@ -114,12 +132,12 @@
 
     dialog.innerHTML = `
       <div class="pep-head">
+        <button class="pep-close" aria-label="Close">&times;</button>
         <div>
           <span class="pep-cat">${esc(p.subcategory || p.category)}</span>
           <h2 id="pepTitle">${esc(p.name)}</h2>
         </div>
         <span class="pep-price">${esc(p.priceDisplay)}</span>
-        <button class="pep-close" aria-label="Close">&times;</button>
       </div>
       <div class="pep-body">
         ${info.blurb ? `<p>${esc(info.blurb)}</p>` : ""}
