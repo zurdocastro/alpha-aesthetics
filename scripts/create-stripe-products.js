@@ -169,9 +169,23 @@ async function main() {
     return;
   }
 
-  fs.writeFileSync(CART_DATA_PATH, updatedContents, "utf8");
-
   console.log(`\nDone. Created: ${created}, skipped: ${skipped}.`);
+
+  // Claiming the catalog was updated when nothing was created reads as success
+  // and sends someone off to commit a diff that does not exist.
+  if (created === 0) {
+    console.log("Nothing was created, so js/cart-data.js was left untouched.");
+    if (skipped > 0) {
+      console.log(
+        "Every item failed — check the errors above. An 'Invalid API Key' means " +
+          "the placeholder sk_live_xxx was passed instead of the real key."
+      );
+    }
+    process.exitCode = 1;
+    return;
+  }
+
+  fs.writeFileSync(CART_DATA_PATH, updatedContents, "utf8");
   console.log(`js/cart-data.js has been updated in place with the real Price IDs.`);
   console.log(
     `\nNext: review the diff, commit, and push. Check Stripe Dashboard -> Products to confirm everything looks right.`
