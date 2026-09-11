@@ -43,14 +43,18 @@
     /* Column layout with a scrolling middle: the longest peptide runs past a
        phone screen, and without this the prescription notice and Add to Cart
        sit below the fold with no way to reach them. */
+    /* display lives ONLY on [open]. Putting it on the bare #pepDialog outranks
+       the browser's own "dialog:not([open]) becomes display:none" on
+       specificity, and the dialog stays painted in normal flow after it
+       closes: visible, with no backdrop, sitting on top of the page. */
     #pepDialog {
       border: 0; border-radius: 6px; padding: 0; width: min(560px, calc(100vw - 32px));
-      max-height: min(86vh, 780px); display: flex; flex-direction: column;
+      max-height: min(86vh, 780px);
       margin: auto; /* display:flex drops the UA centering, so restore it */
       box-shadow: 0 24px 60px rgba(0,0,0,0.28); color: #333;
       font-family: 'Montserrat', system-ui, sans-serif;
     }
-    #pepDialog[open] { display: flex; }
+    #pepDialog[open] { display: flex; flex-direction: column; }
     #pepDialog::backdrop { background: rgba(26,58,66,0.55); }
     .pep-head {
       position: relative; flex: 0 0 auto;
