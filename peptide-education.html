@@ -53,6 +53,72 @@
     .divider { width: 50px; height: 2px; background: var(--teal); margin: 18px 0 28px; }
     .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--teal); margin-bottom: 32px; }
 
+
+    /* ── WHAT MAKES OURS DIFFERENT ── */
+    .difference { background: linear-gradient(135deg, #1a3a42 0%, #2a5a6a 55%, #1a3a42 100%); }
+    .difference .eyebrow { color: #a8d8e2; }
+    .difference .section-title { color: var(--white); }
+    .difference .lead {
+      font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.9);
+      max-width: 640px; margin-bottom: 8px; font-weight: 600;
+    }
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .diff-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(168,216,226,0.22);
+      border-radius: 4px; padding: 26px 24px;
+    }
+    .diff-card h3 {
+      font-size: 12px; letter-spacing: 2px; font-weight: 700;
+      color: #a8d8e2; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .diff-card p { font-size: 13.5px; line-height: 1.8; color: rgba(255,255,255,0.82); }
+
+    /* ── PEPTIDE CATALOG ── */
+    .catalog-nav {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 8px;
+    }
+    .catalog-nav a {
+      font-size: 11px; letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase;
+      color: var(--teal-dark); background: var(--white); border: 1px solid #e0dbd5;
+      padding: 7px 14px; border-radius: 2px; transition: border-color .18s, color .18s;
+    }
+    .catalog-nav a:hover { border-color: var(--teal); color: var(--teal); }
+
+    .cat-group { margin-top: 44px; scroll-margin-top: 110px; }
+    .cat-group > h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--teal-dark);
+      margin-bottom: 4px;
+    }
+    .cat-rule { height: 2px; width: 40px; background: var(--teal); margin-bottom: 20px; }
+
+    .prod-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;
+    }
+    .prod-card {
+      background: var(--white); border: 1px solid #e0dbd5; border-radius: 4px;
+      padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .prod-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .prod-price {
+      font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--teal-dark);
+      line-height: 1;
+    }
+    .prod-card .alpha-add-to-cart {
+      margin-top: auto; background: var(--teal); color: var(--white); border: 0;
+      padding: 10px 14px; font-family: 'Montserrat', sans-serif; font-size: 11px;
+      letter-spacing: 2px; font-weight: 700; border-radius: 2px; cursor: pointer;
+      transition: background .18s;
+    }
+    .prod-card .alpha-add-to-cart:hover { background: var(--teal-dark); }
+
+    .catalog-note {
+      margin-top: 44px; padding: 18px 22px; background: var(--white);
+      border-left: 3px solid var(--teal); font-size: 13px; line-height: 1.8; color: #555;
+    }
+
     .how-it-works { background: var(--light); }
     .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 44px; }
     .step-card { background: var(--white); border-radius: 4px; padding: 36px 28px; border-top: 3px solid var(--teal); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
@@ -146,6 +212,38 @@
   </p>
 </section>
 
+
+<!-- ── WHAT MAKES OURS DIFFERENT ── -->
+<section class="difference">
+  <p class="eyebrow">What Sets Ours Apart</p>
+  <h2 class="section-title">We Are Not a Reconstituted Product</h2>
+  <div class="divider"></div>
+  <p class="lead">Our peptides are biologics &mdash; made in an EU GMP lab from raw natural materials.</p>
+
+  <div class="diff-grid">
+    <div class="diff-card">
+      <h3>EU GMP Manufactured</h3>
+      <p>Made in an EU GMP lab from raw natural materials. We are biologics, not a reconstituted product.</p>
+    </div>
+    <div class="diff-card">
+      <h3>Room Temperature Stable</h3>
+      <p>No refrigeration required. Our peptides stay stable at room temperature.</p>
+    </div>
+    <div class="diff-card">
+      <h3>EpiPen Delivery</h3>
+      <p>No mixing and exact dosing, every time &mdash; delivered through an EpiPen-style auto-injector.</p>
+    </div>
+    <div class="diff-card">
+      <h3>Highest Potency Available</h3>
+      <p>The highest potency of any peptide manufacturer &mdash; three times more than our closest competitor.</p>
+    </div>
+    <div class="diff-card">
+      <h3>Premier Manufacturer</h3>
+      <p>We are the premier peptide manufacturer in the world.</p>
+    </div>
+  </div>
+</section>
+
 <section class="how-it-works">
   <p class="eyebrow">The Process</p>
   <h2 class="section-title" style="text-align:center;">How It Actually Works, Step by Step</h2>
@@ -171,6 +269,401 @@
       <p>A licensed compounding pharmacy — not a general product vendor — prepares the medication under regulatory oversight.</p>
     </div>
   </div>
+</section>
+
+
+<!-- ── PEPTIDE CATALOG ── -->
+<!-- Generated from js/cart-data.js. Rendered as static HTML rather than built
+     by script so it is indexable and survives a JS failure; the ADD TO CART
+     buttons are wired by js/cart.js the same way as every other page. -->
+<section class="how-it-works" id="peptide-catalog">
+  <p class="eyebrow">Our Peptides</p>
+  <h2 class="section-title">Catalog &amp; Pricing</h2>
+  <div class="divider"></div>
+  <p class="section-body">
+    53 peptides across 13 categories. Every one is dispensed on a
+    prescription written by a licensed provider after an individual assessment &mdash;
+    add what you are interested in and we will confirm suitability before anything ships.
+  </p>
+
+  <div class="catalog-nav">
+    <a href="#cat-cellular-repair-anti-aging">Cellular Repair &amp; Anti-aging</a>
+    <a href="#cat-cellular-therapy">Cellular Therapy</a>
+    <a href="#cat-energy-longevity">Energy &amp; Longevity</a>
+    <a href="#cat-focus-mood">Focus &amp; Mood</a>
+    <a href="#cat-immune-recovery">Immune &amp; Recovery</a>
+    <a href="#cat-organ-support">Organ Support</a>
+    <a href="#cat-recovery-growth">Recovery &amp; Growth</a>
+    <a href="#cat-recovery-injury">Recovery &amp; Injury</a>
+    <a href="#cat-skin-anti-aging">Skin &amp; Anti-aging</a>
+    <a href="#cat-sleep-recovery">Sleep &amp; Recovery</a>
+    <a href="#cat-specialty-blends">Specialty Blends</a>
+    <a href="#cat-weight-metabolism">Weight &amp; Metabolism</a>
+    <a href="#cat-wellness-hormonal">Wellness &amp; Hormonal</a>
+  </div>
+
+  <div class="cat-group" id="cat-cellular-repair-anti-aging">
+    <h3>Cellular Repair &amp; Anti-aging</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">IGF-1 LR3</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-igf-1-lr3">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Follistatin 344</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-follistatin-344">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">TB-500</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-tb-500">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">BPC-157</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-bpc-157">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Epitalon</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-epitalon">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">TB4 (Thymosin Beta 4)</span>
+        <span class="prod-price">$303</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-tb4-thymosin-beta-4">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-cellular-therapy">
+    <h3>Cellular Therapy</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Exosomes</span>
+        <span class="prod-price">$3,017</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-exosomes">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Stem Cells</span>
+        <span class="prod-price">$17,242</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-stem-cells">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Muse Cells</span>
+        <span class="prod-price">$23,500</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-muse-cells">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-energy-longevity">
+    <h3>Energy &amp; Longevity</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">SS-31</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-ss-31">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">MOTS-C 40</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-mots-c-40">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">NAD+ Nasal Spray</span>
+        <span class="prod-price">$280</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-nad-plus-nasal-spray">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">NAD+ 300</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-nad-plus-300">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">NAD+ 600</span>
+        <span class="prod-price">$350</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-nad-plus-600">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Humanin</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-humanin">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-focus-mood">
+    <h3>Focus &amp; Mood</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Semax</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-semax">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Selank</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-selank">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">PHDP5 Nasal Spray</span>
+        <span class="prod-price">$675</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-phdp5-nasal-spray">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-immune-recovery">
+    <h3>Immune &amp; Recovery</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Thymosin Alpha-1</span>
+        <span class="prod-price">$328</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-thymosin-alpha-1">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Thymogen</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-thymogen">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">GcMAF</span>
+        <span class="prod-price">$705</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-gcmaf">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">NK Peptide</span>
+        <span class="prod-price">$365</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-nk-peptide">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Thymalin</span>
+        <span class="prod-price">$308</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-thymalin">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">AC-KPV-NH2</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-ac-kpv-nh2">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-organ-support">
+    <h3>Organ Support</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Cardiogen</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-cardiogen">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Bronchogen</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-bronchogen">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Prostamax</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-prostamax">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-recovery-growth">
+    <h3>Recovery &amp; Growth</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">CJC+Ipa</span>
+        <span class="prod-price">$353</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-cjc-plus-ipa">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Tesamorelin</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-tesamorelin">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-recovery-injury">
+    <h3>Recovery &amp; Injury</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">BPC+TB500</span>
+        <span class="prod-price">$338</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-bpc-plus-tb500">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-skin-anti-aging">
+    <h3>Skin &amp; Anti-aging</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">GHK-Cu</span>
+        <span class="prod-price">$245</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-ghk-cu">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-sleep-recovery">
+    <h3>Sleep &amp; Recovery</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">DSIP 10mg</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-dsip-10mg">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-specialty-blends">
+    <h3>Specialty Blends</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Melanotan 2</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-melanotan-2">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Melittin</span>
+        <span class="prod-price">$232</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-melittin">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">BPC-157 Nasal Spray</span>
+        <span class="prod-price">$280</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-bpc-157-nasal-spray">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">VIP</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-vip">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Protein Complex</span>
+        <span class="prod-price">$265</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-protein-complex">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">SS-31 + Cardiogen Blend</span>
+        <span class="prod-price">$398</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-ss-31-plus-cardiogen-blend">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">VIP + MOTS-C Blend</span>
+        <span class="prod-price">$400</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-vip-plus-mots-c-blend">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">GHRP-6</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-ghrp-6">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Selank + DSIP Blend</span>
+        <span class="prod-price">$283</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-selank-plus-dsip-blend">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">5-Amino-1MQ</span>
+        <span class="prod-price">$445</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-5-amino-1mq">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Retatrutide + Follistatin 344 Blend</span>
+        <span class="prod-price">$445</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-retatrutide-plus-follistatin-344-blend">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Selank + Semax Nasal Spray</span>
+        <span class="prod-price">$353</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-selank-plus-semax-nasal-spray">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Oxytocin + PT-141 Nasal Spray</span>
+        <span class="prod-price">$353</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-oxytocin-plus-pt-141-nasal-spray">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-weight-metabolism">
+    <h3>Weight &amp; Metabolism</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Tirz 30mg</span>
+        <span class="prod-price">$568</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-tirz-30mg">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Reta 30mg</span>
+        <span class="prod-price">$303</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-reta-30mg">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Adipotide</span>
+        <span class="prod-price">$293</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-adipotide">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-group" id="cat-wellness-hormonal">
+    <h3>Wellness &amp; Hormonal</h3>
+    <div class="cat-rule"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="prod-name">Kisspeptin</span>
+        <span class="prod-price">$210</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-kisspeptin">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">PT-141</span>
+        <span class="prod-price">$240</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-pt-141">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">CJC-1295 (No DAC)</span>
+        <span class="prod-price">$280</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-cjc-1295-no-dac">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Ipamorelin</span>
+        <span class="prod-price">$210</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-ipamorelin">ADD TO CART</button>
+      </div>
+      <div class="prod-card">
+        <span class="prod-name">Oxytocin</span>
+        <span class="prod-price">$188</span>
+        <button class="alpha-add-to-cart" data-product-id="pep-oxytocin">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="catalog-note">
+    Prices are per vial and do not include the provider consultation. Peptides are shipped
+    to you; your shipping address is collected at checkout. Questions about which peptide
+    fits your goals? Call us at <a href="tel:4706104550" style="color:var(--teal);font-weight:600;">(470) 610-4550</a>
+    or <a href="booking.html" style="color:var(--teal);font-weight:600;">book an education session</a>.
+  </p>
 </section>
 
 <section class="questions">

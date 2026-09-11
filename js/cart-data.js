@@ -148,6 +148,94 @@ const ALPHA_PRODUCTS = [
 
   { id: "muse-consult", category: "Consultations", subcategory: "MUSE Cell", name: "MUSE Cell Consultation Deposit", priceDisplay: "$75", priceId: "price_1U3wu0RoQmeJ4W3H8KPQZUXP", unitBased: false },
 { id: "peptide-education-session", category: "Consultations", subcategory: "Education", name: "Peptide Compounding Education Session", priceDisplay: "$75", priceId: "price_1U5VAeRoQmeJ4W3HIf7fkmxv", unitBased: false },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // PEPTIDES
+  // Catalog and pricing mirrored from pureblendlabs.com. These ship to the
+  // patient, so the "Peptides" category is treated as physical goods by the
+  // checkout function and triggers shipping-address collection.
+  // Price IDs are placeholders until scripts/create-stripe-products.js is run;
+  // until then the cart tells the buyer to call the clinic instead of failing.
+  // ═══════════════════════════════════════════════════════════════════
+
+  // ---------------- PEPTIDES: CELLULAR REPAIR & ANTI-AGING ----------------
+  { id: "pep-igf-1-lr3", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "IGF-1 LR3", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_IGF_1_LR3", unitBased: false },
+  { id: "pep-follistatin-344", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "Follistatin 344", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_FOLLISTATIN_344", unitBased: false },
+  { id: "pep-tb-500", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "TB-500", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_TB_500", unitBased: false },
+  { id: "pep-bpc-157", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "BPC-157", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_BPC_157", unitBased: false },
+  { id: "pep-epitalon", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "Epitalon", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_EPITALON", unitBased: false },
+  { id: "pep-tb4-thymosin-beta-4", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "TB4 (Thymosin Beta 4)", priceDisplay: "$303", priceId: "REPLACE_ME_PEP_TB4_THYMOSIN_BETA_4", unitBased: false },
+
+  // ---------------- PEPTIDES: CELLULAR THERAPY ----------------
+  { id: "pep-exosomes", category: "Peptides", subcategory: "Cellular Therapy", name: "Exosomes", priceDisplay: "$3,017", priceId: "REPLACE_ME_PEP_EXOSOMES", unitBased: false },
+  { id: "pep-stem-cells", category: "Peptides", subcategory: "Cellular Therapy", name: "Stem Cells", priceDisplay: "$17,242", priceId: "REPLACE_ME_PEP_STEM_CELLS", unitBased: false },
+  { id: "pep-muse-cells", category: "Peptides", subcategory: "Cellular Therapy", name: "Muse Cells", priceDisplay: "$23,500", priceId: "REPLACE_ME_PEP_MUSE_CELLS", unitBased: false },
+
+  // ---------------- PEPTIDES: ENERGY & LONGEVITY ----------------
+  { id: "pep-ss-31", category: "Peptides", subcategory: "Energy & Longevity", name: "SS-31", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_SS_31", unitBased: false },
+  { id: "pep-mots-c-40", category: "Peptides", subcategory: "Energy & Longevity", name: "MOTS-C 40", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_MOTS_C_40", unitBased: false },
+  { id: "pep-nad-plus-nasal-spray", category: "Peptides", subcategory: "Energy & Longevity", name: "NAD+ Nasal Spray", priceDisplay: "$280", priceId: "REPLACE_ME_PEP_NAD_PLUS_NASAL_SPRAY", unitBased: false },
+  { id: "pep-nad-plus-300", category: "Peptides", subcategory: "Energy & Longevity", name: "NAD+ 300", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_NAD_PLUS_300", unitBased: false },
+  { id: "pep-nad-plus-600", category: "Peptides", subcategory: "Energy & Longevity", name: "NAD+ 600", priceDisplay: "$350", priceId: "REPLACE_ME_PEP_NAD_PLUS_600", unitBased: false },
+  { id: "pep-humanin", category: "Peptides", subcategory: "Energy & Longevity", name: "Humanin", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_HUMANIN", unitBased: false },
+
+  // ---------------- PEPTIDES: FOCUS & MOOD ----------------
+  { id: "pep-semax", category: "Peptides", subcategory: "Focus & Mood", name: "Semax", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_SEMAX", unitBased: false },
+  { id: "pep-selank", category: "Peptides", subcategory: "Focus & Mood", name: "Selank", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_SELANK", unitBased: false },
+  { id: "pep-phdp5-nasal-spray", category: "Peptides", subcategory: "Focus & Mood", name: "PHDP5 Nasal Spray", priceDisplay: "$675", priceId: "REPLACE_ME_PEP_PHDP5_NASAL_SPRAY", unitBased: false },
+
+  // ---------------- PEPTIDES: IMMUNE & RECOVERY ----------------
+  { id: "pep-thymosin-alpha-1", category: "Peptides", subcategory: "Immune & Recovery", name: "Thymosin Alpha-1", priceDisplay: "$328", priceId: "REPLACE_ME_PEP_THYMOSIN_ALPHA_1", unitBased: false },
+  { id: "pep-thymogen", category: "Peptides", subcategory: "Immune & Recovery", name: "Thymogen", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_THYMOGEN", unitBased: false },
+  { id: "pep-gcmaf", category: "Peptides", subcategory: "Immune & Recovery", name: "GcMAF", priceDisplay: "$705", priceId: "REPLACE_ME_PEP_GCMAF", unitBased: false },
+  { id: "pep-nk-peptide", category: "Peptides", subcategory: "Immune & Recovery", name: "NK Peptide", priceDisplay: "$365", priceId: "REPLACE_ME_PEP_NK_PEPTIDE", unitBased: false },
+  { id: "pep-thymalin", category: "Peptides", subcategory: "Immune & Recovery", name: "Thymalin", priceDisplay: "$308", priceId: "REPLACE_ME_PEP_THYMALIN", unitBased: false },
+  { id: "pep-ac-kpv-nh2", category: "Peptides", subcategory: "Immune & Recovery", name: "AC-KPV-NH2", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_AC_KPV_NH2", unitBased: false },
+
+  // ---------------- PEPTIDES: ORGAN SUPPORT ----------------
+  { id: "pep-cardiogen", category: "Peptides", subcategory: "Organ Support", name: "Cardiogen", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_CARDIOGEN", unitBased: false },
+  { id: "pep-bronchogen", category: "Peptides", subcategory: "Organ Support", name: "Bronchogen", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_BRONCHOGEN", unitBased: false },
+  { id: "pep-prostamax", category: "Peptides", subcategory: "Organ Support", name: "Prostamax", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_PROSTAMAX", unitBased: false },
+
+  // ---------------- PEPTIDES: RECOVERY & GROWTH ----------------
+  { id: "pep-cjc-plus-ipa", category: "Peptides", subcategory: "Recovery & Growth", name: "CJC+Ipa", priceDisplay: "$353", priceId: "REPLACE_ME_PEP_CJC_PLUS_IPA", unitBased: false },
+  { id: "pep-tesamorelin", category: "Peptides", subcategory: "Recovery & Growth", name: "Tesamorelin", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_TESAMORELIN", unitBased: false },
+
+  // ---------------- PEPTIDES: RECOVERY & INJURY ----------------
+  { id: "pep-bpc-plus-tb500", category: "Peptides", subcategory: "Recovery & Injury", name: "BPC+TB500", priceDisplay: "$338", priceId: "REPLACE_ME_PEP_BPC_PLUS_TB500", unitBased: false },
+
+  // ---------------- PEPTIDES: SKIN & ANTI-AGING ----------------
+  { id: "pep-ghk-cu", category: "Peptides", subcategory: "Skin & Anti-aging", name: "GHK-Cu", priceDisplay: "$245", priceId: "REPLACE_ME_PEP_GHK_CU", unitBased: false },
+
+  // ---------------- PEPTIDES: SLEEP & RECOVERY ----------------
+  { id: "pep-dsip-10mg", category: "Peptides", subcategory: "Sleep & Recovery", name: "DSIP 10mg", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_DSIP_10MG", unitBased: false },
+
+  // ---------------- PEPTIDES: SPECIALTY BLENDS ----------------
+  { id: "pep-melanotan-2", category: "Peptides", subcategory: "Specialty Blends", name: "Melanotan 2", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_MELANOTAN_2", unitBased: false },
+  { id: "pep-melittin", category: "Peptides", subcategory: "Specialty Blends", name: "Melittin", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_MELITTIN", unitBased: false },
+  { id: "pep-bpc-157-nasal-spray", category: "Peptides", subcategory: "Specialty Blends", name: "BPC-157 Nasal Spray", priceDisplay: "$280", priceId: "REPLACE_ME_PEP_BPC_157_NASAL_SPRAY", unitBased: false },
+  { id: "pep-vip", category: "Peptides", subcategory: "Specialty Blends", name: "VIP", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_VIP", unitBased: false },
+  { id: "pep-protein-complex", category: "Peptides", subcategory: "Specialty Blends", name: "Protein Complex", priceDisplay: "$265", priceId: "REPLACE_ME_PEP_PROTEIN_COMPLEX", unitBased: false },
+  { id: "pep-ss-31-plus-cardiogen-blend", category: "Peptides", subcategory: "Specialty Blends", name: "SS-31 + Cardiogen Blend", priceDisplay: "$398", priceId: "REPLACE_ME_PEP_SS_31_PLUS_CARDIOGEN_BLEND", unitBased: false },
+  { id: "pep-vip-plus-mots-c-blend", category: "Peptides", subcategory: "Specialty Blends", name: "VIP + MOTS-C Blend", priceDisplay: "$400", priceId: "REPLACE_ME_PEP_VIP_PLUS_MOTS_C_BLEND", unitBased: false },
+  { id: "pep-ghrp-6", category: "Peptides", subcategory: "Specialty Blends", name: "GHRP-6", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_GHRP_6", unitBased: false },
+  { id: "pep-selank-plus-dsip-blend", category: "Peptides", subcategory: "Specialty Blends", name: "Selank + DSIP Blend", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_SELANK_PLUS_DSIP_BLEND", unitBased: false },
+  { id: "pep-5-amino-1mq", category: "Peptides", subcategory: "Specialty Blends", name: "5-Amino-1MQ", priceDisplay: "$445", priceId: "REPLACE_ME_PEP_5_AMINO_1MQ", unitBased: false },
+  { id: "pep-retatrutide-plus-follistatin-344-blend", category: "Peptides", subcategory: "Specialty Blends", name: "Retatrutide + Follistatin 344 Blend", priceDisplay: "$445", priceId: "REPLACE_ME_PEP_RETATRUTIDE_PLUS_FOLLISTATIN_344_BLEND", unitBased: false },
+  { id: "pep-selank-plus-semax-nasal-spray", category: "Peptides", subcategory: "Specialty Blends", name: "Selank + Semax Nasal Spray", priceDisplay: "$353", priceId: "REPLACE_ME_PEP_SELANK_PLUS_SEMAX_NASAL_SPRAY", unitBased: false },
+  { id: "pep-oxytocin-plus-pt-141-nasal-spray", category: "Peptides", subcategory: "Specialty Blends", name: "Oxytocin + PT-141 Nasal Spray", priceDisplay: "$353", priceId: "REPLACE_ME_PEP_OXYTOCIN_PLUS_PT_141_NASAL_SPRAY", unitBased: false },
+
+  // ---------------- PEPTIDES: WEIGHT & METABOLISM ----------------
+  { id: "pep-tirz-30mg", category: "Peptides", subcategory: "Weight & Metabolism", name: "Tirz 30mg", priceDisplay: "$568", priceId: "REPLACE_ME_PEP_TIRZ_30MG", unitBased: false },
+  { id: "pep-reta-30mg", category: "Peptides", subcategory: "Weight & Metabolism", name: "Reta 30mg", priceDisplay: "$303", priceId: "REPLACE_ME_PEP_RETA_30MG", unitBased: false },
+  { id: "pep-adipotide", category: "Peptides", subcategory: "Weight & Metabolism", name: "Adipotide", priceDisplay: "$293", priceId: "REPLACE_ME_PEP_ADIPOTIDE", unitBased: false },
+
+  // ---------------- PEPTIDES: WELLNESS & HORMONAL ----------------
+  { id: "pep-kisspeptin", category: "Peptides", subcategory: "Wellness & Hormonal", name: "Kisspeptin", priceDisplay: "$210", priceId: "REPLACE_ME_PEP_KISSPEPTIN", unitBased: false },
+  { id: "pep-pt-141", category: "Peptides", subcategory: "Wellness & Hormonal", name: "PT-141", priceDisplay: "$240", priceId: "REPLACE_ME_PEP_PT_141", unitBased: false },
+  { id: "pep-cjc-1295-no-dac", category: "Peptides", subcategory: "Wellness & Hormonal", name: "CJC-1295 (No DAC)", priceDisplay: "$280", priceId: "REPLACE_ME_PEP_CJC_1295_NO_DAC", unitBased: false },
+  { id: "pep-ipamorelin", category: "Peptides", subcategory: "Wellness & Hormonal", name: "Ipamorelin", priceDisplay: "$210", priceId: "REPLACE_ME_PEP_IPAMORELIN", unitBased: false },
+  { id: "pep-oxytocin", category: "Peptides", subcategory: "Wellness & Hormonal", name: "Oxytocin", priceDisplay: "$188", priceId: "REPLACE_ME_PEP_OXYTOCIN", unitBased: false },
 ];
 
 // Make available globally (plain script include, no bundler). The Node guard

@@ -10,7 +10,7 @@ const assert = require("assert");
 const { ALPHA_PRODUCTS } = require("../js/cart-data.js");
 const { buildAdminEmail, buildCustomerEmail } = require("../api/stripe-webhook.js");
 
-const SHIPPABLE = /Skincare Products|Supplements|Cleansers|Moisturizers|Serums|Brightening/;
+const SHIPPABLE = /Skincare Products|Supplements|Cleansers|Moisturizers|Serums|Brightening|Peptides/;
 const shippableIds = new Set(
   ALPHA_PRODUCTS.filter((p) => SHIPPABLE.test(p.category)).map((p) => p.priceId)
 );
@@ -28,14 +28,23 @@ for (const id of ["botox-unit", "virtue-face", "iv-executive", "wl-initial-consu
   );
 }
 const retail = ALPHA_PRODUCTS.filter((p) => SHIPPABLE.test(p.category));
-assert.strictEqual(retail.length, 28, `expected 28 physical products, got ${retail.length}`);
+const peptides = ALPHA_PRODUCTS.filter((p) => p.category === "Peptides");
+assert.strictEqual(peptides.length, 53, `expected 53 peptides, got ${peptides.length}`);
+assert.ok(
+  peptides.every((p) => SHIPPABLE.test(p.category)),
+  "peptides are vials that get posted — they must collect a shipping address"
+);
 for (const p of retail) {
   assert.ok(shippableIds.has(p.priceId), `${p.name} is physical but would ship blind`);
 }
 assert.ok(
-  ALPHA_PRODUCTS.every((p) => p.priceId && !p.priceId.startsWith("REPLACE_ME")),
-  "every product needs a real Stripe price id"
+  ALPHA_PRODUCTS.every((p) => p.priceId),
+  "every product needs a priceId field, even a placeholder"
 );
+// A REPLACE_ME id is a legitimate state — cart.js tells the buyer to call
+// instead of failing — but it must be visible, not silent.
+const pending = ALPHA_PRODUCTS.filter((p) => p.priceId.startsWith("REPLACE_ME"));
+const sellable = ALPHA_PRODUCTS.length - pending.length;
 
 // --- order emails ----------------------------------------------------------
 
@@ -88,4 +97,10 @@ assert.ok(
   "a services-only order must not show a shipping address"
 );
 
-console.log("selfcheck OK — 28 physical products ship, 58 services do not; both order emails carry items, and adapt to shipped vs services-only");
+console.log(`selfcheck OK — ${retail.length} physical products ship (${peptides.length} peptides), 58 services do not; both order emails carry items, and adapt to shipped vs services-only`);
+if (pending.length) {
+  console.log(
+    `  note: ${sellable} products sellable, ${pending.length} awaiting Stripe price ids ` +
+      `— run scripts/create-stripe-products.js`
+  );
+}

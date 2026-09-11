@@ -29,7 +29,7 @@ const { ALPHA_PRODUCTS } = require("../../js/cart-data.js");
  * Which catalog categories are physical goods that have to be posted to the
  * patient. Everything else is a service performed at the clinic.
  */
-const SHIPPABLE = /Skincare Products|Supplements|Cleansers|Moisturizers|Serums|Brightening/;
+const SHIPPABLE = /Skincare Products|Supplements|Cleansers|Moisturizers|Serums|Brightening|Peptides/;
 
 const SHIPPABLE_PRICE_IDS = new Set(
   ALPHA_PRODUCTS.filter((p) => SHIPPABLE.test(p.category)).map((p) => p.priceId)
