@@ -116,9 +116,16 @@ exports.handler = async function (event) {
     };
   } catch (err) {
     console.error("Stripe session creation failed:", err);
+    // The generic message left nobody able to tell a dead API key from a bad
+    // price id without dashboard access. Stripe's error type and code say
+    // which, and neither reveals anything a caller could abuse.
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Could not create checkout session" }),
+      body: JSON.stringify({
+        error: "Could not create checkout session",
+        stripeType: err.type || null,
+        stripeCode: err.code || err.rawType || null,
+      }),
     };
   }
 };
