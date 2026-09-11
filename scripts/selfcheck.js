@@ -29,7 +29,7 @@ for (const id of ["botox-unit", "virtue-face", "iv-executive", "wl-initial-consu
 }
 const retail = ALPHA_PRODUCTS.filter((p) => SHIPPABLE.test(p.category));
 const peptides = ALPHA_PRODUCTS.filter((p) => p.category === "Peptides");
-assert.strictEqual(peptides.length, 53, `expected 53 peptides, got ${peptides.length}`);
+assert.strictEqual(peptides.length, 50, `expected 50 peptides, got ${peptides.length}`);
 assert.ok(
   peptides.every((p) => SHIPPABLE.test(p.category)),
   "peptides are vials that get posted — they must collect a shipping address"

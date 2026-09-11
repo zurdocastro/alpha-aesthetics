@@ -166,10 +166,6 @@ const ALPHA_PRODUCTS = [
   { id: "pep-epitalon", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "Epitalon", priceDisplay: "$283", priceId: "REPLACE_ME_PEP_EPITALON", unitBased: false },
   { id: "pep-tb4-thymosin-beta-4", category: "Peptides", subcategory: "Cellular Repair & Anti-aging", name: "TB4 (Thymosin Beta 4)", priceDisplay: "$303", priceId: "REPLACE_ME_PEP_TB4_THYMOSIN_BETA_4", unitBased: false },
 
-  // ---------------- PEPTIDES: CELLULAR THERAPY ----------------
-  { id: "pep-exosomes", category: "Peptides", subcategory: "Cellular Therapy", name: "Exosomes", priceDisplay: "$3,017", priceId: "REPLACE_ME_PEP_EXOSOMES", unitBased: false },
-  { id: "pep-stem-cells", category: "Peptides", subcategory: "Cellular Therapy", name: "Stem Cells", priceDisplay: "$17,242", priceId: "REPLACE_ME_PEP_STEM_CELLS", unitBased: false },
-  { id: "pep-muse-cells", category: "Peptides", subcategory: "Cellular Therapy", name: "Muse Cells", priceDisplay: "$23,500", priceId: "REPLACE_ME_PEP_MUSE_CELLS", unitBased: false },
 
   // ---------------- PEPTIDES: ENERGY & LONGEVITY ----------------
   { id: "pep-ss-31", category: "Peptides", subcategory: "Energy & Longevity", name: "SS-31", priceDisplay: "$232", priceId: "REPLACE_ME_PEP_SS_31", unitBased: false },
