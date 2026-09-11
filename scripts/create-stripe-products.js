@@ -51,6 +51,7 @@ const Stripe = require("stripe");
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const CART_DATA_PATH = path.join(__dirname, "..", "js", "cart-data.js");
+const DRY_RUN = process.argv.includes("--dry-run");
 
 function loadProducts() {
   const fileContents = fs.readFileSync(CART_DATA_PATH, "utf8");
@@ -84,6 +85,16 @@ async function createProductAndPrice(item) {
     return null;
   }
 
+  // A Stripe product can be archived but never deleted, so 50 of them created
+  // from a bad price parse is a mess someone has to clean by hand. --dry-run
+  // shows exactly what would be charged before any of it is real.
+  if (DRY_RUN) {
+    console.log(
+      `  · would create ${item.name.padEnd(34)} ${(unitAmount / 100).toFixed(2).padStart(9)} USD`
+    );
+    return `price_DRYRUN_${item.id}`;
+  }
+
   const product = await stripe.products.create({
     name: item.name,
     metadata: {
@@ -114,7 +125,11 @@ async function main() {
     return;
   }
 
-  console.log(`Found ${toCreate.length} item(s) needing Stripe Products/Prices.\n`);
+  console.log(
+    `Found ${toCreate.length} item(s) needing Stripe Products/Prices.` +
+      (DRY_RUN ? "  (DRY RUN — nothing will be created)" : "") +
+      "\n"
+  );
 
   let updatedContents = fileContents;
   let created = 0;
@@ -137,12 +152,21 @@ async function main() {
         `$1${priceId}$2`
       );
 
-      console.log(`✅ Created "${item.name}" -> ${priceId}`);
+      if (!DRY_RUN) console.log(`✅ Created "${item.name}" -> ${priceId}`);
       created++;
     } catch (err) {
       console.error(`❌ Failed on "${item.name}":`, err.message);
       skipped++;
     }
+  }
+
+  if (DRY_RUN) {
+    // Writing here would stamp price_DRYRUN_* ids into the catalog, which is
+    // worse than the problem the dry run exists to prevent.
+    console.log(`\nDRY RUN — ${created} would be created, ${skipped} skipped.`);
+    console.log("Nothing was created and js/cart-data.js was not touched.");
+    console.log("Re-run without --dry-run to do it for real.");
+    return;
   }
 
   fs.writeFileSync(CART_DATA_PATH, updatedContents, "utf8");
