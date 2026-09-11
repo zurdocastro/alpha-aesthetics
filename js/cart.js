@@ -493,6 +493,10 @@
     });
   }
 
+  // Exposed so content rendered after load — the peptide detail popup — can
+  // wire its own buttons. The data-wired guard makes it safe to call again.
+  window.alphaWireAddToCart = wireAddToCartButtons;
+
   // ---------- Init ----------
 
   document.addEventListener("DOMContentLoaded", function () {
