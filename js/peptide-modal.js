@@ -22,13 +22,22 @@
 
   const style = document.createElement("style");
   style.textContent = `
+    /* The text is 17px tall inside a 48px row — too small to hit on a phone.
+       Padding grows the tap target to fill the row and the negative margin
+       takes the layout back, so nothing moves and neighbouring rows do not
+       overlap. */
     .pep-open {
-      background: none; border: 0; padding: 0; margin: 0; cursor: pointer;
+      background: none; border: 0; cursor: pointer;
+      padding: 15px 0; margin: -15px 0;
       font: inherit; color: inherit; text-align: left;
-      border-bottom: 1px dotted rgba(74,143,160,0.55);
       transition: color .15s, border-color .15s;
     }
-    .pep-open:hover, .pep-open:focus-visible { color: var(--teal, #4a8fa0); border-bottom-color: var(--teal, #4a8fa0); }
+    .pep-open > span {
+      border-bottom: 1px dotted rgba(74,143,160,0.55);
+      transition: border-color .15s;
+    }
+    .pep-open:hover, .pep-open:focus-visible { color: var(--teal, #4a8fa0); }
+    .pep-open:hover > span, .pep-open:focus-visible > span { border-bottom-color: var(--teal, #4a8fa0); }
     .pep-open:focus-visible { outline: 2px solid var(--teal, #4a8fa0); outline-offset: 3px; }
 
     /* Column layout with a scrolling middle: the longest peptide runs past a
@@ -181,7 +190,9 @@
     const opener = document.createElement("button");
     opener.type = "button";
     opener.className = "pep-open";
-    opener.textContent = nameEl.textContent;
+    const label = document.createElement("span");
+    label.textContent = nameEl.textContent;
+    opener.appendChild(label);
     opener.setAttribute("aria-haspopup", "dialog");
     opener.addEventListener("click", () => {
       render(id);
