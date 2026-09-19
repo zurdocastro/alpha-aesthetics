@@ -6,17 +6,21 @@
  * duplicates and their prices. Nothing is deleted — archived items just
  * stop showing as "Active" and can't be used for new checkouts.
  *
- * Run with your LIVE secret key from the repo root:
- *   STRIPE_SECRET_KEY=sk_live_xxx node scripts/archive-duplicate-products.js
+ * Run from the repo root; it asks for the key at a hidden prompt:
+ *   node scripts/archive-duplicate-products.js
+ *
+ * Use a RESTRICTED key (rk_) scoped to read and write on Products and Prices
+ * rather than the secret key the live site uses — rotating that one takes
+ * checkout down until Vercel is updated.
  */
 
 const Stripe = require("stripe");
 
-const key = process.env.STRIPE_SECRET_KEY;
-if (!key) {
-  console.error("Missing STRIPE_SECRET_KEY. Run like:\n  STRIPE_SECRET_KEY=sk_live_xxx node scripts/archive-duplicate-products.js");
-  process.exit(1);
-}
+const { getStripeKey } = require("./stripe-key.js");
+const key = getStripeKey(
+  "archive-duplicate-products.js",
+  "read and write access to Products and Prices"
+);
 const stripe = new Stripe(key);
 
 async function listAllActiveProducts() {

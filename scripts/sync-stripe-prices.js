@@ -15,8 +15,10 @@
  *   node scripts/sync-stripe-prices.js --dry-run     # show what would change
  *   node scripts/sync-stripe-prices.js               # do it
  *
- * It asks for the Stripe secret key, so nothing lands in your shell history.
- * STRIPE_SECRET_KEY is still honoured for CI.
+ * It asks for the key at a hidden prompt, so nothing lands in your shell
+ * history. Use a RESTRICTED key (rk_) scoped to read and write on Prices —
+ * rotating it cannot take the live site's checkout down, which rotating the
+ * site's sk_ key has done twice. STRIPE_SECRET_KEY is still honoured for CI.
  *
  * AFTER RUNNING: commit js/cart-data.js. Until that is pushed, the live site
  * still points at the old price ids.
@@ -30,69 +32,11 @@ const CART_DATA_PATH = path.join(__dirname, "..", "js", "cart-data.js");
 const DRY_RUN = process.argv.includes("--dry-run");
 const ONLY = (process.argv.find((a) => a.startsWith("--category=")) || "").split("=")[1];
 
-/** Key from the environment, piped stdin, or a hidden prompt — never an argument. */
-function readHiddenFromTty() {
-  const fd = fs.openSync("/dev/tty", "rs");
-  process.stderr.write("Stripe secret key (input hidden): ");
-  const wasRaw = process.stdin.isRaw;
-  if (process.stdin.setRawMode) process.stdin.setRawMode(true);
-  let key = "";
-  const buf = Buffer.alloc(1);
-  for (;;) {
-    let n;
-    try {
-      n = fs.readSync(fd, buf, 0, 1);
-    } catch (e) {
-      if (e.code === "EAGAIN") continue;
-      throw e;
-    }
-    if (n === 0) break;
-    const ch = buf.toString("utf8");
-    if (ch === "\n" || ch === "\r" || ch === "") break;
-    if (ch === "") {
-      process.stderr.write("\n");
-      process.exit(130);
-    }
-    if (ch === "") {
-      key = key.slice(0, -1);
-      continue;
-    }
-    key += ch;
-  }
-  if (process.stdin.setRawMode) process.stdin.setRawMode(!!wasRaw);
-  fs.closeSync(fd);
-  process.stderr.write("\n");
-  return key.trim();
-}
-
-function getKey() {
-  if (process.env.STRIPE_SECRET_KEY) return process.env.STRIPE_SECRET_KEY.trim();
-  if (!process.stdin.isTTY) {
-    try {
-      return fs.readFileSync(0, "utf8").trim();
-    } catch {
-      return "";
-    }
-  }
-  try {
-    return readHiddenFromTty();
-  } catch {
-    return "";
-  }
-}
-
-process.env.STRIPE_SECRET_KEY = getKey();
-
-if (!/^sk_(live|test)_[A-Za-z0-9]+$/.test(process.env.STRIPE_SECRET_KEY)) {
-  console.error(
-    "\n❌ No usable Stripe secret key.\n" +
-      "   It must start with sk_live_ or sk_test_. Provide it by any of:\n" +
-      "     • run the script and paste it at the prompt\n" +
-      '     • pipe it:  printf "%s" "$KEY" | node scripts/sync-stripe-prices.js\n' +
-      "     • environment:  STRIPE_SECRET_KEY=sk_live_... node scripts/sync-stripe-prices.js\n"
-  );
-  process.exit(1);
-}
+const { getStripeKey } = require("./stripe-key.js");
+process.env.STRIPE_SECRET_KEY = getStripeKey(
+  "sync-stripe-prices.js",
+  "read and write access to Prices"
+);
 
 const Stripe = require("stripe");
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);

@@ -14,7 +14,11 @@
  * HOW TO RUN
  * ---------------------------------------------------------------------
  * 1. Make sure Node.js is installed (node -v to check).
- * 2. In the repo root (same folder as js/cart-data.js), run:
+ * 2. Use a RESTRICTED key (rk_), not the site's secret key. Stripe ->
+ *    Developers -> API keys -> Create restricted key, with write access to
+ *    Products and Prices. Rotating a restricted key cannot take the live
+ *    site's checkout down; rotating the sk_ key has, twice.
+ * 3. In the repo root (same folder as js/cart-data.js), run:
  *
  *      npm install stripe
  *      STRIPE_SECRET_KEY=sk_test_yourKeyHere node scripts/create-stripe-products.js
@@ -38,74 +42,11 @@
 const fs = require("fs");
 const path = require("path");
 
-/**
- * Where the key comes from, in order: the environment (CI), piped stdin, or a
- * hidden prompt. Anything but a command-line argument — a key typed as an
- * argument lands in the shell history in plain text, and getting the variable
- * name and the value the right way round is a step people reliably fumble.
- */
-function readHiddenFromTty() {
-  const fd = fs.openSync("/dev/tty", "rs");
-  process.stderr.write("Stripe secret key (input hidden): ");
-
-  const wasRaw = process.stdin.isRaw;
-  if (process.stdin.setRawMode) process.stdin.setRawMode(true);
-
-  let key = "";
-  const buf = Buffer.alloc(1);
-  for (;;) {
-    let n;
-    try {
-      n = fs.readSync(fd, buf, 0, 1);
-    } catch (e) {
-      if (e.code === "EAGAIN") continue;
-      throw e;
-    }
-    if (n === 0) break;
-    const ch = buf.toString("utf8");
-    if (ch === "\n" || ch === "\r" || ch === "\u0004") break;
-    if (ch === "\u0003") { process.stderr.write("\n"); process.exit(130); }
-    if (ch === "\u007f") { key = key.slice(0, -1); continue; }
-    key += ch;
-  }
-
-  if (process.stdin.setRawMode) process.stdin.setRawMode(!!wasRaw);
-  fs.closeSync(fd);
-  process.stderr.write("\n");
-  return key.trim();
-}
-
-function getKey() {
-  if (process.env.STRIPE_SECRET_KEY) return process.env.STRIPE_SECRET_KEY.trim();
-
-  // Piped in: `printf '%s' "$KEY" | node scripts/create-stripe-products.js`
-  if (!process.stdin.isTTY) {
-    try {
-      return fs.readFileSync(0, "utf8").trim();
-    } catch {
-      return "";
-    }
-  }
-
-  try {
-    return readHiddenFromTty();
-  } catch {
-    return "";
-  }
-}
-
-process.env.STRIPE_SECRET_KEY = getKey();
-
-if (!/^sk_(live|test)_[A-Za-z0-9]+$/.test(process.env.STRIPE_SECRET_KEY)) {
-  console.error(
-    "\n❌ No usable Stripe secret key.\n" +
-      "   It must start with sk_live_ or sk_test_. Provide it by any of:\n" +
-      "     • run the script and paste it at the prompt\n" +
-      "     • pipe it:  printf '%s' \"$KEY\" | node scripts/create-stripe-products.js\n" +
-      "     • environment:  STRIPE_SECRET_KEY=sk_live_... node scripts/create-stripe-products.js\n"
-  );
-  process.exit(1);
-}
+const { getStripeKey } = require("./stripe-key.js");
+process.env.STRIPE_SECRET_KEY = getStripeKey(
+  "create-stripe-products.js",
+  "write access to Products and Prices"
+);
 
 const Stripe = require("stripe");
 
