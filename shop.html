@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Shop | Alpha Aesthetics &amp; Health | Alpharetta, GA</title>
-  <meta name="description" content="Every treatment, peptide and product available from Alpha Aesthetics &amp; Health in Alpharetta, GA, with transparent pricing. Tap any name for the detail." />
+  <meta name="description" content="Order compounded peptides, medical-grade skincare and physician-recommended supplements from Alpha Aesthetics &amp; Health in Alpharetta, GA. Shipped to you, with transparent pricing." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Alpha Aesthetics &amp; Health" />
   <link rel="canonical" href="https://alphaaesthetichealth.com/shop.html" />
   <meta property="og:title" content="Shop | Alpha Aesthetics &amp; Health" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="Every treatment, peptide and product available from Alpha Aesthetics &amp; Health, with transparent pricing." />
+  <meta property="og:description" content="Compounded peptides, medical-grade skincare and supplements from Alpha Aesthetics &amp; Health, shipped to you." />
   <meta property="og:url" content="https://alphaaesthetichealth.com/shop.html" />
   <meta property="og:image" content="https://alphaaesthetichealth.com/images/herophoto.jpg" />
   <link rel="icon" type="image/webp" href="images/logo.webp" />
@@ -42,8 +42,12 @@
     .shop-head h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 5vw, 52px); color: var(--teal-dark); line-height: 1.15; margin-bottom: 18px; }
     .divider { width: 50px; height: 2px; background: var(--teal); margin-bottom: 26px; }
     .shop-head p { font-size: 13.5px; line-height: 1.9; color: #555; max-width: 700px; }
+    /* Treatments are not sold here, so the page has to say where they are
+       rather than leave someone hunting for a Botox price that moved. */
+    .shop-services { margin-top: 14px; font-size: 12.5px !important; color: #777 !important; }
+    .shop-services a { color: var(--teal); font-weight: 600; border-bottom: 1px solid rgba(74,143,160,0.4); }
 
-    /* Category index: 136 items is a lot to scroll past blind. */
+    /* Category index: 78 items is a lot to scroll past blind. */
     .shop-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 0; padding: 0 8%; }
     .shop-nav a {
       font-size: 11px; letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase;
@@ -127,436 +131,27 @@
   <h1>Shop</h1>
   <div class="divider"></div>
   <p>
-    Everything available from Alpha Aesthetics &amp; Health in one place &mdash; treatments
-    performed at the clinic, compounded peptides, and the skincare and supplements we carry.
-    Tap any name for the detail. Treatments and prescribed items are confirmed by a licensed
-    provider before anything is scheduled or shipped.
+    Everything you can order and have shipped to you &mdash; our compounded peptides,
+    and the medical-grade skincare and supplements we carry. Tap any name for the detail.
+    Prescribed items are confirmed by a licensed provider before anything is dispensed.
+  </p>
+  <p class="shop-services">
+    Looking for a treatment? Those are performed at the clinic and are priced on each
+    <a href="index.html#services">service page</a>, or just
+    <a href="booking.html">book a consultation</a>.
   </p>
 </div>
 
   <div class="shop-nav">
-    <a href="#c-injectables">Injectables <span>12</span></a>
-    <a href="#c-body-contouring">Body Contouring <span>12</span></a>
-    <a href="#c-skin-treatments">Skin Treatments <span>13</span></a>
-    <a href="#c-hormone-wellness">Hormone &amp; Wellness <span>14</span></a>
-    <a href="#c-medical-weight-loss">Medical Weight Loss <span>5</span></a>
     <a href="#c-peptides">Peptides <span>50</span></a>
-    <a href="#c-consultations">Consultations <span>2</span></a>
     <a href="#c-skincare-products">Skincare Products <span>14</span></a>
     <a href="#c-supplements">Supplements <span>14</span></a>
   </div>
 
-  <section class="shop-cat" id="c-injectables">
-    <h2>Injectables</h2>
-    <div class="cat-rule"></div>
-    <div class="pricing-grid">
-      <div class="price-category">
-        <h3>Neurotoxins</h3>
-        <div class="price-item">
-          <span>Dysport (per unit)</span>
-          <span class="price-amt">$10/unit
-          <input type="number" class="alpha-qty-input" data-product-id="dysport-unit" value="20" min="1" aria-label="Units" />
-            <button class="alpha-add-to-cart" data-product-id="dysport-unit">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Botox (per unit)</span>
-          <span class="price-amt">$11/unit
-          <input type="number" class="alpha-qty-input" data-product-id="botox-unit" value="20" min="1" aria-label="Units" />
-            <button class="alpha-add-to-cart" data-product-id="botox-unit">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Restylane Fillers</h3>
-        <div class="price-item">
-          <span>Restylane Lyft</span>
-          <span class="price-amt">$750
-            <button class="alpha-add-to-cart" data-product-id="restylane-lyft">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Restylane Defyne</span>
-          <span class="price-amt">$750
-            <button class="alpha-add-to-cart" data-product-id="restylane-defyne">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Restylane Refine</span>
-          <span class="price-amt">$600
-            <button class="alpha-add-to-cart" data-product-id="restylane-refine">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Restylane Contour</span>
-          <span class="price-amt">$750
-            <button class="alpha-add-to-cart" data-product-id="restylane-contour">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Restylane-L</span>
-          <span class="price-amt">$700
-            <button class="alpha-add-to-cart" data-product-id="restylane-l">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>PDO Thread Lift</h3>
-        <div class="price-item">
-          <span>Full PDO Thread Lift</span>
-          <span class="price-amt">$2,500 (ask about disc. $2,000)
-            <button class="alpha-add-to-cart" data-product-id="pdo-full">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Smooth Lift – Nasolabial</span>
-          <span class="price-amt">$725 (ask about disc. $500)
-            <button class="alpha-add-to-cart" data-product-id="pdo-nasolabial">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Smooth Lift – Marionette</span>
-          <span class="price-amt">$500 (ask about disc. $375)
-            <button class="alpha-add-to-cart" data-product-id="pdo-marionette">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Smooth Lift – Eye Trough</span>
-          <span class="price-amt">$500 (ask about disc. $375)
-            <button class="alpha-add-to-cart" data-product-id="pdo-eye-trough">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Smooth Lift – Lips</span>
-          <span class="price-amt">$375 (ask about disc. $250)
-            <button class="alpha-add-to-cart" data-product-id="pdo-lips">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="shop-cat" id="c-body-contouring">
-    <h2>Body Contouring</h2>
-    <div class="cat-rule"></div>
-    <div class="pricing-grid">
-      <div class="price-category">
-        <h3>PHYSIQ</h3>
-        <div class="price-item">
-          <span>PHYSIQ 5-Session Package</span>
-          <span class="price-amt">$3,000
-            <button class="alpha-add-to-cart" data-product-id="physiq-5session">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>PHYSIQ Single Session</span>
-          <span class="price-amt">$600
-            <button class="alpha-add-to-cart" data-product-id="physiq-single">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Virtue RF Face</h3>
-        <div class="price-item">
-          <span>Virtue RF – Face</span>
-          <span class="price-amt">$750
-            <button class="alpha-add-to-cart" data-product-id="virtue-face">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Face + Neck</span>
-          <span class="price-amt">$950
-            <button class="alpha-add-to-cart" data-product-id="virtue-face-neck">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Face + Neck + Chest</span>
-          <span class="price-amt">$1,100
-            <button class="alpha-add-to-cart" data-product-id="virtue-face-neck-chest">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Virtue RF Body</h3>
-        <div class="price-item">
-          <span>Virtue RF – Arms</span>
-          <span class="price-amt">$1,150
-            <button class="alpha-add-to-cart" data-product-id="virtue-arms">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Abdomen</span>
-          <span class="price-amt">$1,400
-            <button class="alpha-add-to-cart" data-product-id="virtue-abdomen">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Thighs</span>
-          <span class="price-amt">$1,400
-            <button class="alpha-add-to-cart" data-product-id="virtue-thighs">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Buttox</span>
-          <span class="price-amt">$1,400
-            <button class="alpha-add-to-cart" data-product-id="virtue-buttox">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Scars</span>
-          <span class="price-amt">$750
-            <button class="alpha-add-to-cart" data-product-id="virtue-scars">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Stretch Marks</span>
-          <span class="price-amt">$1,150
-            <button class="alpha-add-to-cart" data-product-id="virtue-stretch-marks">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Virtue RF – Submental (Under Chin)</span>
-          <span class="price-amt">$550
-            <button class="alpha-add-to-cart" data-product-id="virtue-submental">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="shop-cat" id="c-skin-treatments">
-    <h2>Skin Treatments</h2>
-    <div class="cat-rule"></div>
-    <div class="pricing-grid">
-      <div class="price-category">
-        <h3>VI Peel</h3>
-        <div class="price-item">
-          <span>VI Peel</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="vi-peel">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>VI Peel Advanced</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="vi-peel-advanced">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>VI Peel Precision Plus</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="vi-peel-precision-plus">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>VI Peel Purify</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="vi-peel-purify">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>VI Peel Purify w/ Precision Plus</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="vi-peel-purify-precision">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>VI Peel Body (Small)</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="vi-peel-body-small">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>VI Peel Body (Large)</span>
-          <span class="price-amt">$450
-            <button class="alpha-add-to-cart" data-product-id="vi-peel-body-large">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Facials</h3>
-        <div class="price-item">
-          <span>Signature Alpha Facial (45 min)</span>
-          <span class="price-amt">$150
-            <button class="alpha-add-to-cart" data-product-id="facial-signature">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Sports Facial (60 min)</span>
-          <span class="price-amt">$140
-            <button class="alpha-add-to-cart" data-product-id="facial-sports">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Teen Facial (30 min)</span>
-          <span class="price-amt">$99
-            <button class="alpha-add-to-cart" data-product-id="facial-teen">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Red Light Therapy</h3>
-        <div class="price-item">
-          <span>Red Light Therapy – Single Session (20 min)</span>
-          <span class="price-amt">$50
-            <button class="alpha-add-to-cart" data-product-id="rlt-single">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Red Light Therapy – 5 Sessions</span>
-          <span class="price-amt">$225
-            <button class="alpha-add-to-cart" data-product-id="rlt-5pack">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Red Light Therapy – 10 Sessions</span>
-          <span class="price-amt">$400
-            <button class="alpha-add-to-cart" data-product-id="rlt-10pack">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="shop-cat" id="c-hormone-wellness">
-    <h2>Hormone &amp; Wellness</h2>
-    <div class="cat-rule"></div>
-    <div class="pricing-grid">
-      <div class="price-category">
-        <h3>EvexiPEL</h3>
-        <div class="price-item">
-          <span>Consultation</span>
-          <span class="price-amt">$75
-            <button class="alpha-add-to-cart" data-product-id="evexipel-consult">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Pre-Pellet Labs (Male)</span>
-          <span class="price-amt">$199
-            <button class="alpha-add-to-cart" data-product-id="evexipel-labs-male">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Pre-Pellet Labs (Female)</span>
-          <span class="price-amt">$199
-            <button class="alpha-add-to-cart" data-product-id="evexipel-labs-female">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Male Pellets Procedure</span>
-          <span class="price-amt">$699
-            <button class="alpha-add-to-cart" data-product-id="evexipel-male-procedure">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Female Pellets Procedure</span>
-          <span class="price-amt">$499
-            <button class="alpha-add-to-cart" data-product-id="evexipel-female-procedure">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Post-Pellet Labs (Male)</span>
-          <span class="price-amt">$100
-            <button class="alpha-add-to-cart" data-product-id="evexipel-post-labs-male">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Post-Pellet Labs (Female)</span>
-          <span class="price-amt">$100
-            <button class="alpha-add-to-cart" data-product-id="evexipel-post-labs-female">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Follow-Up Testosterone Injection</span>
-          <span class="price-amt">$125
-            <button class="alpha-add-to-cart" data-product-id="evexipel-followup-t-injection">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Testosterone Cypionate Injection</span>
-          <span class="price-amt">$25
-            <button class="alpha-add-to-cart" data-product-id="evexipel-t-cypionate">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Sermorelin</h3>
-        <div class="price-item">
-          <span>Sermorelin Injection</span>
-          <span class="price-amt">$250
-            <button class="alpha-add-to-cart" data-product-id="sermorelin-injection">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>IV Therapy</h3>
-        <div class="price-item">
-          <span>Executive IV</span>
-          <span class="price-amt">$219
-            <button class="alpha-add-to-cart" data-product-id="iv-executive">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Natural Defense IV</span>
-          <span class="price-amt">$325
-            <button class="alpha-add-to-cart" data-product-id="iv-natural-defense">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Glutathione Add-On</span>
-          <span class="price-amt">$25
-            <button class="alpha-add-to-cart" data-product-id="iv-glutathione-addon">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Amino Blend Add-On</span>
-          <span class="price-amt">$25
-            <button class="alpha-add-to-cart" data-product-id="iv-amino-addon">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="shop-cat" id="c-medical-weight-loss">
-    <h2>Medical Weight Loss</h2>
-    <div class="cat-rule"></div>
-    <div class="pricing-grid">
-      <div class="price-category">
-        <h3>Consultations &amp; Visits</h3>
-        <div class="price-item">
-          <span>Initial Consultation</span>
-          <span class="price-amt">$75
-            <button class="alpha-add-to-cart" data-product-id="wl-initial-consult">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Semaglutide Visit</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="wl-semaglutide-visit">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Tirzepatide Visit (2.5 or 5 mg)</span>
-          <span class="price-amt">$350
-            <button class="alpha-add-to-cart" data-product-id="wl-tirzepatide-low">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Tirzepatide Visit (7.5 or 10 mg)</span>
-          <span class="price-amt">$600
-            <button class="alpha-add-to-cart" data-product-id="wl-tirzepatide-mid">Add to Cart</button>
-          </span>
-        </div>
-        <div class="price-item">
-          <span>Tirzepatide Visit (12.5 or 15 mg)</span>
-          <span class="price-amt">$750
-            <button class="alpha-add-to-cart" data-product-id="wl-tirzepatide-high">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="shop-cat" id="c-peptides">
     <h2>Peptides</h2>
@@ -901,30 +496,6 @@
     </div>
   </section>
 
-  <section class="shop-cat" id="c-consultations">
-    <h2>Consultations</h2>
-    <div class="cat-rule"></div>
-    <div class="pricing-grid">
-      <div class="price-category">
-        <h3>MUSE Cell</h3>
-        <div class="price-item">
-          <span>MUSE Cell Consultation Deposit</span>
-          <span class="price-amt">$75
-            <button class="alpha-add-to-cart" data-product-id="muse-consult">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-      <div class="price-category">
-        <h3>Education</h3>
-        <div class="price-item">
-          <span>Peptide Compounding Education Session</span>
-          <span class="price-amt">$75
-            <button class="alpha-add-to-cart" data-product-id="peptide-education-session">Add to Cart</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="shop-cat" id="c-skincare-products">
     <h2>Skincare Products</h2>

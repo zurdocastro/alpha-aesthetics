@@ -11,9 +11,13 @@ letterboxes rather than crops, so a label never gets cut off.
 
 ## The ones worth photographing
 
-These are the 28 products a customer buys off a shelf, where a picture is
-what makes the sale. The other 108 items are treatments and visits — a photo of
-a vial of Botox sells nothing, so leave those empty.
+78 products can carry a photo: these 28 off the shelf, plus the 50 peptide vials.
+The other 58 items are treatments and visits, which have no product shot and never
+ask for one.
+
+Start with the 28 below — they are what a customer buys by looking at the bottle,
+so a picture is what makes the sale. The peptide vials can wait, and may well be
+one photo of the same vial used 50 times.
 
 ### Brightening
 
