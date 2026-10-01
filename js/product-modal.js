@@ -7,17 +7,20 @@
  *
  * Turns each product name into a button that opens a dialog with its detail.
  *
- * Only the 50 peptides have written detail (blurb, studied-for, schedule). The
- * other 86 products have none anywhere on the site, so rather than invent copy
- * for a medical catalog their popup shows what is actually known — category,
- * price — and links to the service page that does describe them.
+ * Detail comes from two files keyed by product id: peptide-info.js for the 50
+ * compounded peptides, product-info.js for the other 86. A product photo is
+ * picked up by convention from images/products/<id>.jpg when one exists — no
+ * code or data change is needed to add one, and the popup simply has no picture
+ * until the file is dropped in.
  *
  * Uses <dialog>, so Escape-to-close, the backdrop and focus trapping come from
  * the browser instead of being re-implemented here.
  */
 
 (function () {
-  const INFO = window.ALPHA_PEPTIDE_INFO || {};
+  // Two content files, one lookup: peptide-info.js is the supplier catalog,
+  // product-info.js is the clinic's own menu. Keyed the same, so they merge.
+  const INFO = Object.assign({}, window.ALPHA_PEPTIDE_INFO, window.ALPHA_PRODUCT_INFO);
   const PRODUCTS = window.ALPHA_PRODUCTS || [];
   if (!PRODUCTS.length) return;
 
@@ -35,7 +38,7 @@
     "Medical Weight Loss":{ page: "weight-loss.html",       label: "Medical Weight Loss", rx: "prescription" },
     "Consultations":      { page: "booking.html",           label: "Consultations", rx: "clinic" },
     "Skincare Products":  { page: "skin-and-products.html", label: "Skincare & Products", rx: "retail" },
-    "Supplements":        { page: "skin-and-products.html", label: "Skincare & Products", rx: "retail" },
+    "Supplements":        { page: "skin-and-products.html", label: "Skincare & Products", rx: "supplement" },
   };
 
   // Virtue RF and PHYSIQ have their own pages; the category page is the fallback.
@@ -47,6 +50,12 @@
     "Education": "peptide-education.html",
   };
 
+  /**
+   * Only things you can hold get a photo probe. A treatment has no product
+   * shot, so probing for one is a 404 on every open that will never resolve.
+   */
+  const PHOTO_CATEGORIES = /Peptides|Skincare Products|Supplements/;
+
   const NOTES = {
     prescription:
       "Research and education only. Dispensed on a prescription written by a " +
@@ -55,6 +64,12 @@
       "Performed at the clinic. Suitability is confirmed by a licensed provider " +
       "before any treatment.",
     retail: "",
+    // Required as soon as the copy makes structure/function claims, which every
+    // supplement description does.
+    supplement:
+      "These statements have not been evaluated by the Food and Drug " +
+      "Administration. This product is not intended to diagnose, treat, cure " +
+      "or prevent any disease.",
   };
 
   const byId = new Map(PRODUCTS.map((p) => [p.id, p]));
@@ -126,6 +141,14 @@
     }
     .pep-body h3:first-child { margin-top: 0; }
     .pep-action { font-weight: 600; color: #333; }
+    /* contain, not cover: a bottle cropped to fill the box loses its label,
+       which is the only reason the photo is there. */
+    .pep-img {
+      width: 100%; max-height: 220px; object-fit: contain;
+      background: #faf8f6; border-radius: 4px; margin: 0 0 18px;
+    }
+    .pep-more { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid #efece8; }
+    .pep-more a { color: var(--teal, #4a8fa0); font-weight: 600; }
     .pep-body ul { margin: 0; padding-left: 18px; }
     .pep-body li { margin-bottom: 7px; }
     .pep-dose { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -161,20 +184,24 @@
   const esc = (t) =>
     String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+  function table(heading, rows) {
+    const clean = (rows || []).filter(([, v]) => v);
+    if (!clean.length) return "";
+    return `
+      <h3>${esc(heading)}</h3>
+      <table class="pep-dose"><tbody>
+        ${clean.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}
+      </tbody></table>`;
+  }
+
   function doseRows(d) {
-    const rows = [
+    return table("Typical Schedule", [
       ["Concentration", d.concentration],
       ["Frequency", d.frequency],
       ["Dose", d.dose ? `${d.dose} clicks` : null],
       ["Duration", d.duration],
       ["Break", d.breakPeriod],
-    ].filter(([, v]) => v);
-    if (!rows.length) return "";
-    return `
-      <h3>Typical Schedule</h3>
-      <table class="pep-dose"><tbody>
-        ${rows.map(([k, v]) => `<tr><th>${k}</th><td>${esc(v)}</td></tr>`).join("")}
-      </tbody></table>`;
+    ]);
   }
 
   function render(id) {
@@ -185,14 +212,22 @@
     const page = SUBCATEGORY_PAGE[p.subcategory] || cat.page;
     const note = NOTES[cat.rx] || "";
 
-    // Products with no written detail still get something useful: where the
-    // site already describes them.
-    const moreLink =
-      page && !info.blurb
-        ? `<p style="margin:0"><a href="${esc(page)}" style="color:var(--teal,#4a8fa0);font-weight:600">
-             Read more about ${esc(cat.label || p.category)} &rarr;
-           </a></p>`
-        : "";
+    const moreLink = page
+      ? `<p class="pep-more"><a href="${esc(page)}">
+           Read more about ${esc(cat.label || p.category)} &rarr;
+         </a></p>`
+      : "";
+
+    // "Studied For" is the honest heading for a research peptide and the wrong
+    // one for a facial. The schedule table is what distinguishes them.
+    const benefitsHeading = info.dosing ? "Studied For" : "What to Know";
+
+    // By convention, not by data: drop images/products/<id>.jpg in and it shows
+    // up. The <img> removes itself when there is no file, so a product whose
+    // photo has not been taken yet looks deliberate rather than broken.
+    const photo = PHOTO_CATEGORIES.test(p.category)
+      ? `<img class="pep-img" src="images/products/${esc(p.id)}.jpg" alt="">`
+      : "";
 
     dialog.innerHTML = `
       <div class="pep-head">
@@ -204,15 +239,16 @@
         <span class="pep-price">${esc(p.priceDisplay)}</span>
       </div>
       <div class="pep-body">
+        ${photo}
         ${info.blurb ? `<p>${esc(info.blurb)}</p>` : ""}
-        ${moreLink}
         ${info.action ? `<p class="pep-action" style="margin-top:14px">${esc(info.action)}</p>` : ""}
         ${
           info.benefits && info.benefits.length
-            ? `<h3>Studied For</h3><ul>${info.benefits.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>`
+            ? `<h3>${benefitsHeading}</h3><ul>${info.benefits.map((b) => `<li>${esc(b)}</li>`).join("")}</ul>`
             : ""
         }
-        ${info.dosing ? doseRows(info.dosing) : ""}
+        ${info.dosing ? doseRows(info.dosing) : table("At a Glance", info.facts)}
+        ${moreLink}
       </div>
       <div class="pep-foot">
         ${note ? `<p class="pep-rx">${esc(note)}</p>` : '<span class="pep-rx"></span>'}
@@ -220,6 +256,9 @@
       </div>`;
 
     dialog.querySelector(".pep-close").addEventListener("click", () => dialog.close());
+
+    const img = dialog.querySelector(".pep-img");
+    if (img) img.addEventListener("error", () => img.remove());
 
     // The dialog is built after cart.js has already wired the page, so its own
     // Add to Cart needs hooking up or it silently does nothing.
