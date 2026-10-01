@@ -1,22 +1,61 @@
 /**
- * ALPHA AESTHETICS & HEALTH — PEPTIDE DETAIL POPUP
+ * ALPHA AESTHETICS & HEALTH — PRODUCT DETAIL POPUP
  *
- * Include on peptide-education.html AFTER cart-data.js and peptide-info.js:
+ * Include on any page with a .price-item catalog, AFTER cart-data.js:
  *   <script src="/js/peptide-info.js"></script>
- *   <script src="/js/peptide-modal.js"></script>
+ *   <script src="/js/product-modal.js"></script>
  *
- * Turns each product name in the catalog into a button that opens a dialog
- * with that peptide's detail. Names without an entry in ALPHA_PEPTIDE_INFO are
- * left as plain text rather than offering a control that opens nothing.
+ * Turns each product name into a button that opens a dialog with its detail.
+ *
+ * Only the 50 peptides have written detail (blurb, studied-for, schedule). The
+ * other 86 products have none anywhere on the site, so rather than invent copy
+ * for a medical catalog their popup shows what is actually known — category,
+ * price — and links to the service page that does describe them.
  *
  * Uses <dialog>, so Escape-to-close, the backdrop and focus trapping come from
  * the browser instead of being re-implemented here.
  */
 
 (function () {
-  const INFO = window.ALPHA_PEPTIDE_INFO;
+  const INFO = window.ALPHA_PEPTIDE_INFO || {};
   const PRODUCTS = window.ALPHA_PRODUCTS || [];
-  if (!INFO) return;
+  if (!PRODUCTS.length) return;
+
+  /**
+   * Where each category is already described on the site, and how its items
+   * are delivered. `rx` decides which footer note is honest: a compounded
+   * peptide is dispensed on a prescription, a face cream is not.
+   */
+  const CATEGORY = {
+    "Peptides":           { page: "peptide-education.html", label: "Peptide Compounding", rx: "prescription" },
+    "Injectables":        { page: "injectables.html",       label: "Injectables & Fillers", rx: "clinic" },
+    "Body Contouring":    { page: "body-contouring.html",   label: "Body Contouring", rx: "clinic" },
+    "Skin Treatments":    { page: "skin-and-products.html", label: "Skin Treatments", rx: "clinic" },
+    "Hormone & Wellness": { page: "hormone-wellness.html",  label: "Hormone & Wellness", rx: "prescription" },
+    "Medical Weight Loss":{ page: "weight-loss.html",       label: "Medical Weight Loss", rx: "prescription" },
+    "Consultations":      { page: "booking.html",           label: "Consultations", rx: "clinic" },
+    "Skincare Products":  { page: "skin-and-products.html", label: "Skincare & Products", rx: "retail" },
+    "Supplements":        { page: "skin-and-products.html", label: "Skincare & Products", rx: "retail" },
+  };
+
+  // Virtue RF and PHYSIQ have their own pages; the category page is the fallback.
+  const SUBCATEGORY_PAGE = {
+    "PHYSIQ": "physiq.html",
+    "Virtue RF Face": "virtue-rf.html",
+    "Virtue RF Body": "virtue-rf.html",
+    "MUSE Cell": "muse-cells.html",
+    "Education": "peptide-education.html",
+  };
+
+  const NOTES = {
+    prescription:
+      "Research and education only. Dispensed on a prescription written by a " +
+      "licensed provider after an individual assessment.",
+    clinic:
+      "Performed at the clinic. Suitability is confirmed by a licensed provider " +
+      "before any treatment.",
+    retail: "",
+  };
 
   const byId = new Map(PRODUCTS.map((p) => [p.id, p]));
 
@@ -140,8 +179,20 @@
 
   function render(id) {
     const p = byId.get(id);
-    const info = INFO[id];
-    if (!p || !info) return;
+    if (!p) return;
+    const info = INFO[id] || {};
+    const cat = CATEGORY[p.category] || {};
+    const page = SUBCATEGORY_PAGE[p.subcategory] || cat.page;
+    const note = NOTES[cat.rx] || "";
+
+    // Products with no written detail still get something useful: where the
+    // site already describes them.
+    const moreLink =
+      page && !info.blurb
+        ? `<p style="margin:0"><a href="${esc(page)}" style="color:var(--teal,#4a8fa0);font-weight:600">
+             Read more about ${esc(cat.label || p.category)} &rarr;
+           </a></p>`
+        : "";
 
     dialog.innerHTML = `
       <div class="pep-head">
@@ -154,6 +205,7 @@
       </div>
       <div class="pep-body">
         ${info.blurb ? `<p>${esc(info.blurb)}</p>` : ""}
+        ${moreLink}
         ${info.action ? `<p class="pep-action" style="margin-top:14px">${esc(info.action)}</p>` : ""}
         ${
           info.benefits && info.benefits.length
@@ -163,10 +215,7 @@
         ${info.dosing ? doseRows(info.dosing) : ""}
       </div>
       <div class="pep-foot">
-        <p class="pep-rx">
-          Research and education only. Dispensed on a prescription written by a
-          licensed provider after an individual assessment.
-        </p>
+        ${note ? `<p class="pep-rx">${esc(note)}</p>` : '<span class="pep-rx"></span>'}
         <button class="alpha-add-to-cart" data-product-id="${esc(p.id)}">Add to Cart</button>
       </div>`;
 
@@ -186,7 +235,11 @@
   document.querySelectorAll(".price-item").forEach((row) => {
     const btn = row.querySelector(".alpha-add-to-cart");
     const id = btn && btn.dataset.productId;
-    if (!id || !INFO[id]) return;
+    if (!id) return;
+    const prod = byId.get(id);
+    // Nothing to say about it beyond the price already on the row — leave the
+    // name as plain text instead of a control that opens an empty box.
+    if (!prod || (!INFO[id] && !CATEGORY[prod.category])) return;
 
     const nameEl = row.querySelector("span");
     if (!nameEl || nameEl.classList.contains("price-amt")) return;

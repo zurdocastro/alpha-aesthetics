@@ -415,6 +415,20 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
       .tech-card { width: 90%; padding: 20px 30px; }
       .mission-pillars { flex-direction: column; }
     }
+  
+    /* The cart icon is position:fixed over the bar, so the links need room kept
+       clear on its side. With a fourth tab (SHOP) they ran under it and BOOK NOW
+       wrapped onto a second line. */
+    @media (max-width: 900px) {
+      nav { padding: 12px 4%; padding-right: 76px; gap: 10px; }
+      /* Without this the flex row squeezes the logo into a sliver to make room
+         for the links. */
+      nav > a, nav > img { flex: 0 0 auto; }
+      .logo { height: 46px; width: auto; }
+      .nav-links { gap: 14px; flex-shrink: 1; }
+      .nav-links a { font-size: 10.5px; letter-spacing: 1px; white-space: nowrap; }
+      .nav-cta { padding: 8px 12px; }
+    }
   </style>
 </head>
 <body>
@@ -430,6 +444,7 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
   <img class="logo" src="images/logo.webp" alt="Alpha Aesthetics Logo" />
   <ul class="nav-links">
     <li><a href="#">HOME</a></li>
+    <li><a href="shop.html">SHOP</a></li>
     <li><a href="booking.html">BOOK NOW</a></li>
   </ul>
 </nav>

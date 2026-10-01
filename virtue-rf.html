@@ -472,6 +472,20 @@
       .about-rf img { height: 300px; }
       .btn-outline { margin-left: 0; margin-top: 12px; display: block; width: fit-content; }
     }
+  
+    /* The cart icon is position:fixed over the bar, so the links need room kept
+       clear on its side. With a fourth tab (SHOP) they ran under it and BOOK NOW
+       wrapped onto a second line. */
+    @media (max-width: 900px) {
+      nav { padding: 12px 4%; padding-right: 76px; gap: 10px; }
+      /* Without this the flex row squeezes the logo into a sliver to make room
+         for the links. */
+      nav > a, nav > img { flex: 0 0 auto; }
+      .logo { height: 46px; width: auto; }
+      .nav-links { gap: 14px; flex-shrink: 1; }
+      .nav-links a { font-size: 10.5px; letter-spacing: 1px; white-space: nowrap; }
+      .nav-cta { padding: 8px 12px; }
+    }
   </style>
 </head>
 
@@ -491,6 +505,7 @@
     <ul class="nav-links">
       <li><a href="index.html">HOME</a></li>
       <li><a href="index.html#technologies">TECHNOLOGIES</a></li>
+    <li><a href="shop.html">SHOP</a></li>
       <li><a href="booking.html" class="nav-cta">BOOK NOW</a></li>
     </ul>
   </nav>
