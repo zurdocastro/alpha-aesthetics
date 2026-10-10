@@ -8,7 +8,7 @@
  *
  * Pick a treatment, then pick a time. A "with which provider?" step appears
  * between them only when ALPHA_BOOKING.providers holds more than one — today it
- * holds only Dr. Davis, so the booker renders two steps.
+ * holds a single entry, so the booker renders two steps.
  *
  * The final step has two modes. When ALPHA_BOOKING.calcom.enabled is true it
  * mounts the Cal.com calendar for the treatment's visit type, so the patient
@@ -239,9 +239,6 @@
     }
     if (t.addOn) {
       extra += `<span class="bk-flag">Add-on &mdash; attaches to an IV therapy visit rather than booked on its own.</span>`;
-    }
-    if (!multiProvider && B.providers[0]) {
-      extra += `<span class="bk-flag">Performed by ${B.providers[0].name}</span>`;
     }
     if (t.note) extra += `<span class="bk-flag">${t.note}</span>`;
     detail.innerHTML = bits.join(" · ") + extra;

@@ -46,28 +46,28 @@ const ALPHA_BOOKING = {
     /**
      * What goes before the visit slug in the Cal.com URL. The booker builds
      * cal.com/<base>/<visit-slug>, so this is:
-     *   - a personal username on the Free plan  -> "laurie-davis"
+     *   - a personal username on the Free plan  -> "alphaaesthetics"
      *   - "team/<team-slug>" on the Teams plan  -> "team/alpha-aesthetics"
-     * One provider takes bookings today, so the Free plan covers this.
+     * One calendar takes bookings today, so the Free plan covers this.
      */
     base: "alphaaesthetics",
   },
 
   /**
-   * Providers who take bookings. Dr. Davis performs the treatments, so she is
-   * the only one on the booking calendar — Dr. Heisser still appears in the
-   * "Our Providers" section of index.html, he just is not bookable here.
+   * Who takes bookings. One entry means there is nothing to choose, so the
+   * booker skips the provider step and never prints a name — which is what the
+   * site wants while no individual provider is named publicly.
    *
-   * Adding a second provider here brings the "with which provider?" step back
-   * automatically. Restricting individual treatments to one provider is not
-   * built — every provider in this list is offered for every treatment.
+   * Adding a second entry brings the "with which provider?" step back
+   * automatically, and then `name` does get shown. Restricting individual
+   * treatments to one provider is not built — every entry in this list is
+   * offered for every treatment.
    */
   providers: [
     {
-      id: "davis",
-      name: "Dr. Laurie Davis, NP",
-      role: "Nurse Practitioner · aesthetic & regenerative medicine",
-      photo: "images/lauriedavis.jpg",
+      id: "clinic",
+      name: "Our clinical team",
+      role: "Licensed providers · aesthetic & regenerative medicine",
     },
   ],
 
