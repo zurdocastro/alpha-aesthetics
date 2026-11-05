@@ -9,14 +9,14 @@
  * SETUP REQUIRED (Vercel -> Settings -> Environment Variables, Production):
  *   STRIPE_SECRET_KEY      already set
  *   STRIPE_WEBHOOK_SECRET  from Stripe -> Developers -> Webhooks -> add endpoint
- *                          https://www.alphaaesthetichealth.com/api/stripe-webhook
+ *                          https://www.alpharegenerativemedicine.com/api/stripe-webhook
  *                          event: checkout.session.completed
  *   RESEND_API_KEY         from resend.com -> API Keys
  *   ORDER_EMAIL_TO         defaults to the address below
  *   ORDER_EMAIL_FROM       defaults to Resend's shared sender, which can only
  *                          deliver to the Resend account owner. To send to any
- *                          address, verify alphaaesthetichealth.com in Resend
- *                          and set this to orders@alphaaesthetichealth.com.
+ *                          address, verify alpharegenerativemedicine.com in Resend
+ *                          and set this to orders@alpharegenerativemedicine.com.
  *
  * The signature check is why this reads the raw body: Stripe signs the exact
  * bytes it sent, so Vercel's JSON parsing is disabled below. Without the check,

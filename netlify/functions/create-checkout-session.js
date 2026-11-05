@@ -11,7 +11,7 @@
  * 2. In Netlify Dashboard -> Site settings -> Environment variables, add:
  *      STRIPE_SECRET_KEY = sk_test_...   (use the TEST key first, switch to
  *                                          live key only when ready to go live)
- * 3. Optionally set SITE_URL (e.g. https://alphaaesthetichealth.com) so
+ * 3. Optionally set SITE_URL (e.g. https://www.alpharegenerativemedicine.com) so
  *    success/cancel redirects point to the real domain. Falls back to the
  *    request's own origin if not set.
  *
