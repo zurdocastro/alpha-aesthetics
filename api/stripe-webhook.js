@@ -125,7 +125,7 @@ function buildAdminEmail(session, lineItems) {
     html: `
       <div style="font-family:system-ui,sans-serif;color:#2c2c2c;max-width:560px">
         <h2 style="margin:0 0 4px">New website order</h2>
-        <p style="margin:0 0 20px;color:#666">Alpha Aesthetics &amp; Health</p>
+        <p style="margin:0 0 20px;color:#666">Alpha Regenerative Medicine</p>
 
         ${itemTable(session, lineItems)}
 
@@ -170,7 +170,7 @@ function buildCustomerEmail(session, lineItems) {
        </p>`;
 
   return {
-    subject: `Your Alpha Aesthetics order — ${money(session.amount_total, session.currency)}`,
+    subject: `Your Alpha Regenerative Medicine order — ${money(session.amount_total, session.currency)}`,
     html: `
       <div style="font-family:system-ui,sans-serif;color:#2c2c2c;max-width:560px">
         <h2 style="margin:0 0 4px">Thank you${name ? ", " + name : ""}!</h2>
@@ -184,7 +184,7 @@ function buildCustomerEmail(session, lineItems) {
 
         <div style="margin:28px 0 0;padding-top:16px;border-top:1px solid #e0dbd5;
                     font-size:13px;line-height:1.7;color:#555">
-          <strong>Alpha Aesthetics &amp; Health</strong><br/>
+          <strong>Alpha Regenerative Medicine</strong><br/>
           3450 Old Milton Parkway, Suite 100, Alpharetta, GA 30005<br/>
           (470) 610-4550
         </div>

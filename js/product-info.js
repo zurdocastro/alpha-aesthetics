@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — DETAIL CONTENT FOR EVERYTHING THAT IS NOT A PEPTIDE
+ * ALPHA REGENERATIVE MEDICINE — DETAIL CONTENT FOR EVERYTHING THAT IS NOT A PEPTIDE
  *
  * Same shape and same keys as js/peptide-info.js (product id from cart-data.js),
  * so the popup reads both files as one map. Split in two because the peptides

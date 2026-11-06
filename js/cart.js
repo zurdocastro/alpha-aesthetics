@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — CART
+ * ALPHA REGENERATIVE MEDICINE — CART
  *
  * Include this AFTER cart-data.js on every page:
  *   <script src="/js/cart-data.js"></script>

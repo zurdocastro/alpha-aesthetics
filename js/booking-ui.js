@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — APPOINTMENT BOOKER
+ * ALPHA REGENERATIVE MEDICINE — APPOINTMENT BOOKER
  *
  * Load AFTER cart-data.js and booking-config.js:
  *   <script src="/js/cart-data.js"></script>

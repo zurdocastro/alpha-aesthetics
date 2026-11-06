@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — PRODUCT DETAIL POPUP
+ * ALPHA REGENERATIVE MEDICINE — PRODUCT DETAIL POPUP
  *
  * Include on any page with a .price-item catalog, AFTER cart-data.js:
  *   <script src="/js/peptide-info.js"></script>

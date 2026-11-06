@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — BOOKING CONFIG
+ * ALPHA REGENERATIVE MEDICINE — BOOKING CONFIG
  *
  * Single source of truth for the appointment booker on booking.html.
  *
@@ -12,7 +12,7 @@
  * product at the visit.
  *
  * DURATIONS ARE INDUSTRY REFERENCE VALUES, NOT THE CLINIC'S OWN NUMBERS.
- * Alpha Aesthetics had not measured these, so they were sourced from med spa
+ * Alpha Regenerative Medicine had not measured these, so they were sourced from med spa
  * and manufacturer published times (see BOOKING-DURATIONS.md for the
  * citations behind each one). Four of them came from the clinic's own product
  * names, which already state the time, and those are marked `clinicStated`.

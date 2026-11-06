@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — ARCHIVE DUPLICATE PRODUCTS
+ * ALPHA REGENERATIVE MEDICINE — ARCHIVE DUPLICATE PRODUCTS
  *
  * Finds products that share the exact same name, keeps only the MOST
  * RECENTLY created one active, and archives (deactivates) the older

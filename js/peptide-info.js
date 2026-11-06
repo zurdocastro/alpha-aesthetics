@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — PEPTIDE DETAIL CONTENT
+ * ALPHA REGENERATIVE MEDICINE — PEPTIDE DETAIL CONTENT
  *
  * What the popup on peptide-education.html shows when a product name is
  * clicked. Keyed by the same product id as js/cart-data.js, so a peptide

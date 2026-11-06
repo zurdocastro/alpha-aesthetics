@@ -59,7 +59,7 @@ dónde salieron los números y sigue siendo la referencia si la clínica reconsi
 
 La clínica no tenía tiempos medidos. Estas duraciones se tomaron de tiempos
 publicados por med spas y fabricantes, y son **valores de referencia para
-arrancar**, no números de Alpha Aesthetics. Un profesional de la clínica debe
+arrancar**, no números de Alpha Regenerative Medicine. Un profesional de la clínica debe
 revisarlos antes de abrir la agenda al público.
 
 Cada duración es **tiempo total de silla**, no solo el procedimiento. Esa

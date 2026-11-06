@@ -1,5 +1,5 @@
 /**
- * ALPHA AESTHETICS & HEALTH — PRODUCT / PRICE DATA
+ * ALPHA REGENERATIVE MEDICINE — PRODUCT / PRICE DATA
  *
  * This is the single source of truth the cart reads from.
  *
