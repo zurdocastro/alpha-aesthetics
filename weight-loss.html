@@ -76,7 +76,7 @@
     .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; font-size:12px; text-align:center; color:rgba(255,255,255,0.4); margin-top:20px; }
     footer a { color:rgba(255,255,255,0.65); }
     footer a:hover { color:var(--teal); }
-    @media (max-width:768px) { .intro-grid,.med-cards { grid-template-columns:1fr; } .nav-links { display:none; } }
+    @media (max-width:768px) { .intro-grid,.med-cards { grid-template-columns:1fr; } }
   
     /* The cart icon is position:fixed over the bar, so the links need room kept
        clear on its side. With a fourth tab (SHOP) they ran under it and BOOK NOW
@@ -99,6 +99,18 @@
       .price-item { flex-wrap: wrap; }
       .price-item .price-amt { white-space: normal; text-align: right; }
     }
+  
+    /* On a phone the fixed cart icon lands inside the sticky nav as soon as the
+       banner scrolls away, so the 76px reserved on the right is genuinely
+       spoken for — and with five links the last one ran under it. Rather than
+       shrink the labels to 9px, the links drop to their own row, where the
+       negative margin gives back the space row one has to keep clear. */
+    @media (max-width: 560px) {
+      nav { flex-wrap: wrap; row-gap: 8px; }
+      .nav-links { width: 100%; margin-right: -66px; justify-content: space-between; gap: 6px; }
+      .nav-links a { font-size: 10px; letter-spacing: 0.6px; }
+      .nav-cta { padding: 7px 10px; }
+    }
   </style>
 </head>
 <body>
@@ -109,6 +121,7 @@
   <a href="index.html"><img class="logo" src="images/logo.webp" alt="Alpha Regenerative Medicine" /></a>
   <ul class="nav-links">
     <li><a href="index.html">HOME</a></li>
+    <li><a href="regenerative-medicine.html">REGENERATIVE</a></li>
     <li><a href="index.html#services">SERVICES</a></li>
     <li><a href="shop.html">SHOP</a></li>
     <li><a href="booking.html" class="nav-cta">BOOK NOW</a></li>
