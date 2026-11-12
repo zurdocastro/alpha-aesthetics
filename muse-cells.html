@@ -144,7 +144,7 @@
        negative margin gives back the space row one has to keep clear. */
     @media (max-width: 560px) {
       nav { flex-wrap: wrap; row-gap: 8px; }
-      .nav-links { width: 100%; margin-right: -66px; justify-content: space-between; gap: 6px; }
+      .nav-links { width: 100%; margin-right: -66px; justify-content: flex-start; flex-wrap: wrap; gap: 6px 12px; }
       .nav-links a { font-size: 10px; letter-spacing: 0.6px; }
       .nav-cta { padding: 7px 10px; }
     }
@@ -164,6 +164,7 @@
   <ul class="nav-links">
     <li><a href="index.html">HOME</a></li>
     <li><a href="regenerative-medicine.html">REGENERATIVE</a></li>
+    <li><a href="team.html">OUR TEAM</a></li>
     <li><a href="index.html#services">SERVICES</a></li>
     <li><a href="shop.html">SHOP</a></li>
     <li><a href="booking.html" class="nav-cta">BOOK NOW</a></li>
@@ -306,7 +307,7 @@
     </details>
 
     <details>
-      <summary>Is this the same as other stem cell terms I've heard?</summary>
+      <summary>Is this the same as other cell therapy terms I've heard?</summary>
       <p>No — there are several distinct categories of cells discussed in regenerative science, and the terminology matters. We're happy to walk through the differences during a consultation rather than oversimplify it here.</p>
     </details>
 

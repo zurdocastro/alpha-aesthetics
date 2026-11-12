@@ -120,7 +120,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('images/herophoto.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(26,58,66,0.55), rgba(26,58,66,0.55)), url('images/Outdoor%20couple.png') center/cover no-repeat;
       min-height: 85vh;
       display: flex;
       align-items: center;
@@ -404,7 +404,7 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
        negative margin gives back the space row one has to keep clear. */
     @media (max-width: 560px) {
       nav { flex-wrap: wrap; row-gap: 8px; }
-      .nav-links { width: 100%; margin-right: -66px; justify-content: space-between; gap: 6px; }
+      .nav-links { width: 100%; margin-right: -66px; justify-content: flex-start; flex-wrap: wrap; gap: 6px 12px; }
       .nav-links a { font-size: 10px; letter-spacing: 0.6px; }
       .nav-cta { padding: 7px 10px; }
     }
@@ -424,6 +424,7 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
   <ul class="nav-links">
     <li><a href="#">HOME</a></li>
     <li><a href="regenerative-medicine.html">REGENERATIVE</a></li>
+    <li><a href="team.html">OUR TEAM</a></li>
     <li><a href="shop.html">SHOP</a></li>
     <li><a href="booking.html">BOOK NOW</a></li>
   </ul>
@@ -432,9 +433,9 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Look Sharper.<br>Feel Stronger.</h1>
-    <p>NO REFERRALS. NO RUNAROUND. AESTHETICS & HEALTHCARE, DONE RIGHT, IN ONE PLACE.</p>
-    <a href="booking.html" class="btn btn-white">BOOK NOW</a>
+    <h1>Move Like<br>You Used To</h1>
+    <p>REGENERATIVE MEDICINE FOR KNEE, SHOULDER, BACK AND NERVE PAIN &middot; ALPHARETTA, GA</p>
+    <a href="regenerative-medicine.html" class="btn btn-white">SEE IF IT'S A FIT</a>
   </div>
 </section>
 
@@ -442,29 +443,33 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
 <section class="regen-band">
   <div class="regen-inner">
     <p class="section-label">Regenerative Medicine</p>
-    <h2 class="section-title">More Than a Med Spa</h2>
+    <h2 class="section-title">Somewhere Between "Live With It" and Surgery</h2>
     <p>
-      Bioidentical hormone optimization, compounded peptide therapy and IV nutrient therapy
-      &mdash; physician-supervised, individually assessed, and dosed from your own lab work
-      rather than a standard starting amount.
+      Most people reach us after the rest, the anti-inflammatories and the physical therapy
+      &mdash; and after being told the only options left are an operation or learning to cope.
+      We evaluate whether there is another conversation worth having.
     </p>
     <div class="regen-links">
-      <a href="hormone-wellness.html">Hormone Optimization</a>
-      <a href="peptide-education.html">Peptide Therapy</a>
-      <a href="hormone-wellness.html">IV Therapy</a>
-      <a href="muse-cells.html">MUSE Cell Science</a>
+      <a href="regenerative-medicine.html">Knee Pain</a>
+      <a href="regenerative-medicine.html">Shoulder Pain</a>
+      <a href="regenerative-medicine.html">Back Pain</a>
+      <a href="regenerative-medicine.html">Hip Pain</a>
+      <a href="regenerative-medicine.html">Neck Pain</a>
+      <a href="regenerative-medicine.html">Joint Discomfort</a>
+      <a href="regenerative-medicine.html">Nerve Pain &amp; Neuropathy</a>
     </div>
+    <p style="margin-top:22px;font-size:12.5px;color:rgba(255,255,255,0.7);">
+      Being evaluated is not the same as being a candidate. The visit is how you find out which.
+    </p>
     <a href="regenerative-medicine.html" class="btn btn-white" style="margin-top:26px;">EXPLORE REGENERATIVE MEDICINE</a>
   </div>
 </section>
 
-
-<!-- ABOUT -->
 <section class="about">
   <div class="about-inner">
     <div>
-      <p class="section-label">PREMIER MED SPA IN ALPHARETTA, GA</p>
-      <h2 class="section-title">Aesthetic Care Without the Guesswork</h2>
+      <p class="section-label">ALSO AT ALPHA &mdash; AESTHETICS &amp; WELLNESS</p>
+      <h2 class="section-title">Aesthetics, Without the Guesswork</h2>
       <p>Alpharetta has plenty of med spas. Most treat everyone the same way. We don't.</p>
       <p>Every treatment plan starts with your anatomy, your goals, and your history — not a menu you pick off a wall. Injectables, skin treatments, body contouring, weight loss, hormone therapy: one team, one chart, one standard of care.</p>
       <a href="booking.html" class="btn btn-teal" style="margin-top:10px;">BOOK NOW</a>
@@ -499,7 +504,7 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <p class="section-label">TO HELP YOU LOOK AND FEEL YOUR BEST</p>
+  <p class="section-label">AESTHETICS, HORMONES &amp; WELLNESS</p>
   <h2 class="section-title">Personalized Services</h2>
   <p style="max-width:700px;margin:0 auto;font-size:13px;line-height:1.9;color:#555;">Injectables and fillers. Skincare and supplements. Body contouring. Medical weight loss. Hormone and wellness therapy. Pick where you want to start — we'll build the rest of the plan around you.</p>
   <div class="services-grid">
@@ -584,7 +589,7 @@ text-shadow: 1px 1px 0px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
   <details><summary>Do you accept insurance?</summary><p>We do not bill insurance. However, we provide receipts you can submit for potential reimbursement if your plan allows.</p></details>
 
   <div class="faq-section-title">TREATMENTS</div>
-  <details><summary>What services do you offer?</summary><p>We offer medical weight loss (including peptide therapy), skin treatments (facials, microneedling, chemical peels), and injectables (BOTOX®, JUVÉDERM®, and more).</p></details>
+  <details><summary>What services do you offer?</summary><p>Regenerative medicine evaluations for knee, shoulder, back, hip and nerve pain; hormone optimization and peptide therapy; medical weight loss; and aesthetics — injectables, skin treatments and body contouring.</p></details>
   <details><summary>Is there a consultation before treatment?</summary><p>Yes, every new patient receives a thorough consultation to assess your goals and create a customized treatment plan.</p></details>
   <details><summary>Do you offer treatments for men?</summary><p>Absolutely! Our services, including hormone therapy, weight loss, and skin care, are designed for both women and men.</p></details>
   <details><summary>Will I need downtime after treatment?</summary><p>Most of our services are minimally invasive with little to no downtime. We'll guide you through what to expect for each treatment.</p></details>
