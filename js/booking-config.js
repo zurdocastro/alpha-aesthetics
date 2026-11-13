@@ -136,6 +136,21 @@ const ALPHA_BOOKING = {
    * `addOn` items are never booked alone — they attach to another visit.
    */
   treatments: [
+    // ---------------- REGENERATIVE MEDICINE ----------------
+    // First in the list because the select is grouped in array order, and a
+    // patient arriving from a seminar should not have to hunt past the
+    // aesthetics menu. It carries its own name and group because there is no
+    // catalog product behind it, and it reuses the initial-consultation event
+    // type, which already exists in Cal.com — a new slug would 404 until
+    // someone ran the creation script.
+    {
+      id: "regen-consult",
+      visit: "initial-consultation",
+      name: "Regenerative Medicine Consultation",
+      group: "Regenerative Medicine",
+      note: "An evaluation, not a treatment visit. Not every patient is a candidate; that is what this appointment determines.",
+    },
+
     // ---------------- INJECTABLES ----------------
     { id: "dysport-unit", visit: "neurotoxins" },
     { id: "botox-unit", visit: "neurotoxins" },

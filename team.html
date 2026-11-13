@@ -104,9 +104,15 @@
     }
   
     .team { padding:80px 8%; background:var(--white); }
-    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; max-width:1050px; margin:40px auto 0; }
-    .person { }
-    .person img { width:100%; max-width:300px; border-radius:4px; margin-bottom:22px; }
+    .team-grid { max-width:1000px; margin:40px auto 0; }
+    /* Stacked rows rather than a grid: the medical director has to read as the
+       first person on the page, which side-by-side columns do not guarantee. */
+    .person { display:grid; grid-template-columns:300px 1fr; gap:44px; align-items:start; padding-bottom:50px; margin-bottom:50px; border-bottom:1px solid #e8e4e0; }
+    .person:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+    .portrait { position:relative; width:100%; aspect-ratio:1/1; border-radius:4px; overflow:hidden; background:linear-gradient(135deg,#1a3a42 0%,#2a5a6a 100%); }
+    .portrait span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:84px; color:rgba(255,255,255,0.92); letter-spacing:2px; }
+    .portrait img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    @media (max-width:700px) { .person { grid-template-columns:1fr; gap:24px; } .portrait { max-width:280px; } }
     .person h3 { font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--teal-dark); margin-bottom:6px; }
     .person .role { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:18px; line-height:1.8; }
     /* One person in an auto-fit grid stretches the bio to the full 1050px,
@@ -126,6 +132,7 @@
     <li><a href="index.html">HOME</a></li>
     <li><a href="regenerative-medicine.html">REGENERATIVE</a></li>
     <li><a href="team.html">OUR TEAM</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
     <li><a href="index.html#services">SERVICES</a></li>
     <li><a href="shop.html">SHOP</a></li>
     <li><a href="booking.html" class="nav-cta">BOOK NOW</a></li>
@@ -147,33 +154,64 @@
   <h2 class="section-title">Care Has a Name and a Face</h2>
   <p>
     Every evaluation at our Alpharetta practice is performed by a licensed clinician, under
-    physician-supervised protocols. You should know who that is before you walk in &mdash;
-    not after.
+    the oversight of our medical director. You should know who both of them are before you
+    walk in &mdash; not after.
   </p>
 </section>
 
 <section class="team">
   <div class="team-grid">
     <div class="person">
-      <img src="images/team/rachel-applegate.jpg" alt="Rachel Applegate, FNP-BC" />
-      <h3>Rachel Applegate, FNP-BC</h3>
-      <p class="role">Board-Certified Family Nurse Practitioner<br>Hospital Medicine &amp; Regenerative Medicine</p>
-      <p>
-        Rachel Applegate is a board-certified Family Nurse Practitioner with several years of
-        clinical experience and a strong background in hospital medicine. She brings a
-        compassionate, patient-centered approach to regenerative medicine, emphasizing
-        personalized care, patient education, and helping individuals feel comfortable,
-        informed, and confident throughout their healthcare journey.
-      </p>
-      <p>
-        Passionate about improving quality of life, Rachel is dedicated to understanding each
-        patient&rsquo;s unique needs and helping them explore treatment options that align with
-        their health and wellness goals.
-      </p>
-      <p>
-        Outside of medicine, Rachel is a proud mother of three who enjoys spending quality time
-        with her family, exploring the outdoors, traveling, and tending to her garden.
-      </p>
+      <div class="portrait">
+        <span>KJ</span>
+        <img src="images/team/kashif-janjua.jpg" alt="Kashif A. Janjua, MD" />
+      </div>
+      <div>
+        <h3>Kashif A. Janjua, MD</h3>
+        <p class="role">Medical Director<br>Board-Certified Internal Medicine</p>
+        <p>
+          Dr. Kashif Janjua is a board-certified internal medicine physician and serves as
+          Medical Director, responsible for clinical oversight, care standards, and the
+          treatment protocols every patient is evaluated under.
+        </p>
+        <p>
+          His experience spans hospital, outpatient and telehealth settings, and he has worked
+          with clinical teams on building the kind of systems that keep care safe and
+          consistent rather than improvised.
+        </p>
+        <p>
+          Dr. Janjua&rsquo;s focus is the bigger picture: that any recommendation fits a
+          patient&rsquo;s overall health, and that the evidence, the limits and the
+          alternatives are all on the table before a decision gets made.
+        </p>
+      </div>
+    </div>
+
+    <div class="person">
+      <div class="portrait">
+        <span>RA</span>
+        <img src="images/team/rachel-applegate.jpg" alt="Rachel Applegate, FNP-BC" />
+      </div>
+      <div>
+        <h3>Rachel Applegate, FNP-BC</h3>
+        <p class="role">Board-Certified Family Nurse Practitioner<br>Hospital Medicine &amp; Regenerative Medicine</p>
+        <p>
+          Rachel Applegate is a board-certified Family Nurse Practitioner with several years of
+          clinical experience and a strong background in hospital medicine. She brings a
+          compassionate, patient-centered approach to regenerative medicine, emphasizing
+          personalized care, patient education, and helping individuals feel comfortable,
+          informed, and confident throughout their healthcare journey.
+        </p>
+        <p>
+          Passionate about improving quality of life, Rachel is dedicated to understanding each
+          patient&rsquo;s unique needs and helping them explore treatment options that align with
+          their health and wellness goals.
+        </p>
+        <p>
+          Outside of medicine, Rachel is a proud mother of three who enjoys spending quality time
+          with her family, exploring the outdoors, traveling, and tending to her garden.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -199,6 +237,19 @@
   <div class="footer-bottom"><a href="index.html">Home</a> &nbsp;|&nbsp; <a href="booking.html">Book Now</a> &nbsp;|&nbsp; Individual results may vary. Not a substitute for personalized medical advice.</div>
 </footer>
 
+<script>
+  // Each portrait shows initials until images/team/<name>.jpg exists. Dropping
+  // the file in is the whole change — no markup edit, and no broken image icon
+  // in the meantime.
+  document.querySelectorAll(".portrait img").forEach(function (img) {
+    function drop() { img.remove(); }
+    // The 404 can resolve before this script runs, in which case the error
+    // event has already fired and listening for it never catches anything —
+    // the broken-image icon just sits on top of the monogram.
+    if (img.complete && img.naturalWidth === 0) drop();
+    else img.addEventListener("error", drop);
+  });
+</script>
 <script src="/js/cart-data.js"></script>
 <script src="/js/cart.js"></script>
 </body>

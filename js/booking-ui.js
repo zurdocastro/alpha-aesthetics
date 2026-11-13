@@ -31,9 +31,12 @@
 
   // Treatments the catalog actually knows about, in catalog order so the groups
   // read the same way they do on the service pages.
+  // An entry may carry its own name and group instead of pointing at a catalog
+  // product: a regenerative consultation is something you book, not something
+  // the shop sells, so it has no product and should not be given one.
   const treatments = B.treatments
     .map((t) => ({ ...t, product: byId.get(t.id), type: B.visitTypes[t.visit] }))
-    .filter((t) => t.product && t.type);
+    .filter((t) => t.type && (t.product || t.name));
 
   // With a single bookable provider there is nothing to choose, so the picker
   // is skipped and that provider is the answer. It comes back automatically if
@@ -56,9 +59,14 @@
   function treatmentOptions() {
     const groups = new Map();
     for (const t of treatments) {
-      const label = t.product.subcategory
-        ? `${t.product.category} — ${t.product.subcategory}`
-        : t.product.category;
+      // An entry without a product must carry `group`; fall back rather than
+      // throw, because one missing field here blanks the whole booker.
+      const label = t.group
+        ? t.group
+        : t.product.subcategory
+          ? `${t.product.category} — ${t.product.subcategory}`
+          : t.product.category || "Other";
+
       if (!groups.has(label)) groups.set(label, []);
       groups.get(label).push(t);
     }
@@ -66,7 +74,8 @@
     for (const [label, items] of groups) {
       html += `<optgroup label="${label}">`;
       for (const t of items) {
-        html += `<option value="${t.id}">${t.product.name} · ${minutesLabel(t.type.minutes)}</option>`;
+        const name = t.name || (t.product && t.product.name) || t.id;
+        html += `<option value="${t.id}">${name} · ${minutesLabel(t.type.minutes)}</option>`;
       }
       html += "</optgroup>";
     }
@@ -180,7 +189,7 @@
         layout: "month_view",
         // Travels to the clinic on the booking so the provider knows exactly
         // which of the 58 treatments the patient chose.
-        "metadata[treatment]": t.product.name,
+        "metadata[treatment]": t.name || (t.product && t.product.name) || t.id,
         "metadata[provider]": state.provider,
       },
     });
@@ -229,10 +238,8 @@
       detail.hidden = true;
       return;
     }
-    const bits = [
-      `<strong>${minutesLabel(t.type.minutes)}</strong> in clinic`,
-      t.product.priceDisplay,
-    ];
+    const bits = [`<strong>${minutesLabel(t.type.minutes)}</strong> in clinic`];
+    if (t.product) bits.push(t.product.priceDisplay);
     let extra = "";
     if (t.packageOf) {
       extra += `<span class="bk-flag">Price covers ${t.packageOf} sessions &mdash; you book them one at a time.</span>`;
